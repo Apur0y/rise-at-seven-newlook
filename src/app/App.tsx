@@ -1,20 +1,24 @@
 import CustomCursor from './components/CustomCursor';
-import AnnouncementBar from './components/AnnouncementBar';
+import AnnouncementBar from './components/home/AnnouncementBar';
 import Navbar from './components/Navbar';
-import Banner from './components/Banner';
-import AgencyBehind from './components/AgencyBehind';
-import AboutUs from './components/AboutUs';
-import FeaturedWork from './components/FeaturedWork';
-import OurServices from './components/OurServices';
-import SendUsBrief from './components/SendUsBrief';
-import LegacyInMaking from './components/LegacyInMaking';
-import WhatsNew from './components/WhatsNew';
+import Banner from './components/home/Banner';
+import AgencyBehind from './components/home/AgencyBehind';
+import AboutUs from './components/home/AboutUs';
+import FeaturedWork from './components/home/FeaturedWork';
+import OurServices from './components/home/OurServices';
+import SendUsBrief from './components/home/SendUsBrief';
+import LegacyInMaking from './components/home/LegacyInMaking';
+import WhatsNew from './components/home/WhatsNew';
 import ReadyToRise from './components/ReadyToRise';
-import Footer from './components/Footer';
+import Footer from './components/home/Footer';
+import SmoothScroll from './components/SmoothScroll';
+import SendBrief from './components/home/SendBrief';
 
 export default function App() {
   return (
+    
     <div className="min-h-screen bg-white">
+      <SmoothScroll>
       <CustomCursor />
       <AnnouncementBar />
       <Navbar />
@@ -25,9 +29,11 @@ export default function App() {
       <OurServices />
       <SendUsBrief />
       <LegacyInMaking />
+      <SendBrief/>
       <WhatsNew />
       <ReadyToRise />
       <Footer />
+      </SmoothScroll>
     </div>
   );
 }
