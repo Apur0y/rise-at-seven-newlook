@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import { MdArrowOutward } from "react-icons/md";
+import AnimatedButton from "./AnimatedButton";
 
 export default function Navbar() {
   const [scrollY, setScrollY] = useState(0);
@@ -87,10 +88,11 @@ export default function Navbar() {
             <NavItem label="Blog" />
             <NavItem label="Webinar" />
           </div>
+          {/* <AnimatedButton>Get In Touch</AnimatedButton> */}
 
-          <button className=" rounded-full cursor-pointer font-medium hover-button overflow-hidden relative group transition-all duration-300 hover:scale-105">
+          <button className=" rounded-full cursor-pointer font-medium hover-button overflow-hidden relative group transition-all duration-300 hover:rounded-md ">
             <span
-              className={`relative z-10  px-5 py-3 flex items-center gap-2 ${
+              className={` z-10  px-5 py-3 flex items-center gap-2 ${
                 hasGlass && scrollY > 30
                   ? "bg-black text-white"
                   : "bg-white text-black"
@@ -103,9 +105,9 @@ export default function Navbar() {
                 hasGlass && scrollY > 30
                   ? "bg-black text-white"
                   : "bg-white text-black"
-              }  flex items-center justify-center translate-y-full transition-transform duration-200 group-hover:translate-y-0`}
+              }  flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 `}
             >
-              Get In Touch
+              Get In Touch <MdArrowOutward className="mt-1" />
             </span>
           </button>
         </div>
