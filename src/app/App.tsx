@@ -13,6 +13,7 @@ import ReadyToRise from './components/ReadyToRise';
 import Footer from './components/home/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import SendBrief from './components/home/SendBrief';
+import LegacyIn from './components/home/LegacyIn';
 
 export default function App() {
   return (
@@ -25,10 +26,11 @@ export default function App() {
       <Banner />
       <AgencyBehind />
       <AboutUs />
-      <FeaturedWork />
+      {/* <FeaturedWork /> */}
       <OurServices />
       <SendUsBrief />
-      <LegacyInMaking />
+      {/* <LegacyInMaking /> */}\
+      <LegacyIn/>
       <SendBrief/>
       <WhatsNew />
       <ReadyToRise />
