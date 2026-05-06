@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MdArrowOutward } from 'react-icons/md';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +27,7 @@ export default function OurServices() {
       servicesRef.current.forEach((service, index) => {
         gsap.fromTo(
           service,
-          { opacity: 0, x: -100 },
+          { opacity: 0, x:0 },
           {
             opacity: 1,
             x: 0,
@@ -48,8 +49,8 @@ export default function OurServices() {
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 bg-white">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
+      <div className=" px-2 lg:px-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6 border-b pb-4">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">Our Services</h2>
           <button className="px-8 py-4 bg-black text-white rounded-full font-medium overflow-hidden relative group transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <span className="relative z-10 block transition-transform duration-200 ease-out group-hover:-translate-y-full">
@@ -61,26 +62,30 @@ export default function OurServices() {
           </button>
         </div>
 
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
           {SERVICES.map((service, index) => (
             <div
               key={index}
               ref={(el) => (servicesRef.current[index] = el)}
-              className="relative group cursor-pointer py-6 md:py-8 px-6 md:px-8 rounded-2xl transition-all duration-300 opacity-0"
+              className="relative group cursor-pointer py-6 md:py-6 px-6 md:px-8 rounded-4xl transition-all duration-300 opacity-0"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
                 backgroundColor: hoveredIndex === index ? '#000' : 'transparent',
-                transform: hoveredIndex === index ? 'translateX(20px)' : 'translateX(0)'
+                // transform: hoveredIndex === index ? 'translateX(20px)' : 'translateX(0)'
               }}
             >
               <h3
-                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold transition-all duration-300"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold transition-all duration-300"
                 style={{
                   color: hoveredIndex === index ? '#fff' : '#000'
                 }}
               >
-                {service}
+                {hoveredIndex === index && <MdArrowOutward   style={{
+              
+                transform: hoveredIndex === index ? 'translateY(0px)' : 'translateY(20)'
+              }} className="inline-block mr-2 transition-all duration-300" />}
+               {service}
               </h3>
             </div>
           ))}
