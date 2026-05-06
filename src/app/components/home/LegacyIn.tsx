@@ -1,65 +1,3 @@
-// import {  useRef } from "react";
-// import {  useGSAP } from "@gsap/react";
-// import gsap from "gsap";
-
-// export default function LegacyIn() {
-//   const containerRef = useRef<HTMLDivElement>(null);
-
-//   const card1 = useRef<HTMLDivElement>(null);
-//   const card2 = useRef<HTMLDivElement>(null);
-//   const card3 = useRef<HTMLDivElement>(null);
-
-//   useGSAP(() => {
-//     gsap.to(card1.current, {
-//      scale:0.8,
-//         duration:3,
-//         // rotateY:360,
-//         opacity:0,
-//       scrollTrigger: {
-//         trigger: card1.current,
-//         start: "top 10%",
-//         end: "bottom 30%",
-//         scrub: true,
-//        markers: true,
-//        pin: true,
-
-//       },
-//     });
-//   },
-// {scope: containerRef});
-
-//   return (
-//     <div
-//       ref={containerRef}
-//       className=" flex flex-col items-center gap-12 min-h-screen py-[15vh]"
-//     >
-//       <div
-//         ref={card1}
-//         className="bg-blue-500 p-6 rounded-lg shadow-lg max-w-md text-black min-h-36 py-44"
-//       >
-//         <h3 className="text-2xl font-bold mb-2">2019 - Founded</h3>
-//         <p>Started with a mission to change digital marketing</p>
-//       </div>
-
-//       <div
-//         ref={card2}
-//         className="bg-yellow-500 p-6 rounded-lg shadow-lg max-w-md text-black min-h-screen"
-//       >
-//         <h3 className="text-2xl font-bold mb-2">2020 - Growth</h3>
-//         <p>Expanded team and services</p>
-//       </div>
-
-//       <div
-//         ref={card3}
-//         className="bg-orange-500 p-6 rounded-lg shadow-lg max-w-md text-black min-h-screen"
-//       >
-//         <h3 className="text-2xl font-bold mb-2">2021 - Scale</h3>
-//         <p>Reached global clients</p>
-//       </div>
-//     </div>
-//   );
-// }
-
 import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -70,92 +8,104 @@ const CARDS = [
   {
     year: "2019",
     tag: "Chapter 01",
-    title: "Founded",
-    desc: "Started with a mission to change digital marketing.",
-    bg: "bg-blue-900",
+    title: "Speed",
+    desc: "People ask us why we are called Rise at Seven? Ever heard the saying Early Bird catches the worm? Google is moving fast, but humans are moving faster. We chase consumers, not algorithms. We’ve created a service which takes ideas to result within 60 minutes.",
+    bg: "bg-white",
+    class: "rotate-12 text-black",
+    image:
+      "https://rise-atseven.transforms.svdcdn.com/production/images/Screenshot-2025-06-23-at-23.15.19.png?w=1600&h=1600&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847626&s=d00aadc5240b895dd5d4b08f7e61eb59",
   },
   {
     year: "2021",
-    tag: "Chapter 02",
     title: "Award Winning",
-    desc: "Recognized as the UK's best SEO agency.",
-    bg: "bg-orange-900",
+    desc: "A roll top bath full of 79 awards. Voted The Drum's best agency outside of London. We are official judges for industry awards including Global Search Awards and Global Content Marketing Awards.",
+    bg: "bg-teal-200",
+    class: "rotate-9 text-black",
+    image:
+      "https://rise-atseven.transforms.svdcdn.com/production/images/d4df0d30-d590-4e94-9056-9491f4beacba.JPG?w=1600&h=1600&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847714&s=b1befabf8bc726903f9a84284e5ff609",
   },
   {
     year: "2023",
     tag: "Chapter 03",
-    title: "Global Expansion",
-    desc: "Offices across 4 continents.",
-    bg: "bg-green-900",
-  },
-  {
-    year: "2023",
-    tag: "Chapter 03",
-    title: "Global Expansion",
-    desc: "Offices across 4 continents.",
-    bg: "bg-yellow-900",
+    title: "Pioneers",
+    desc: "We’re dedicated to creating the industry narrative that others follow 3 years from now. We paved the path for creative SEO, multi-channel search with Digital PR, and Social Search and we will continue to do it. ",
+    desc2:
+      "We’re on a mission to be the first search-first agency to win a Cannes Lion disrupting the status quo.",
+    class: "rotate-6",
+    bg: "bg-black text-white",
+    image:
+      "https://rise-atseven.transforms.svdcdn.com/production/images/b2087e0cd3f699d3efc76f809ec72a85a6ab378e-1080x1350.jpg?w=1600&h=1600&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847630&s=fca4e779651c6bbd2dbe236d21673786",
   },
 ];
 
 export default function LegacyIn() {
   const container = useRef<HTMLDivElement>(null);
 
-useLayoutEffect(() => {
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top 0%",
-        end: `bottom 16%`, // important!
-        scrub: true,
-        pin: true,
-        markers: true,
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".card");
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: `+=300`, // important!
+          scrub: 2,
+          pin: true,
+        },
+      });
 
-      },
+      // animate cards one by one
+      cards.reverse().forEach((card: any, i) => {});
+      tl.fromTo(
+        cards,
+        { y: 0, opacity: 1 },
+        {
+          y: (top) => top - 600, // move up based on scroll
+          opacity: 1,
+          rotate: -40,
+          stagger: 1, // 🔥 key for one-by-one
+        },
+      );
     });
 
-    // animate cards one by one
-    tl.fromTo(
-      ".card:not(:first-child)",
-      { x: 600, opacity: 1 },
-      {
-        x: 0,
-        opacity: 1,
-        stagger: 1, // 🔥 key for one-by-one
-      }
-    );
-  });
-
-  return () => ctx.revert();
-}, []);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div ref={container} className=" flex items-center justify-center py-40 my-20">
-      {/* <div className="h-screen flex items-center justify-center text-white/40">
-        ↓ Scroll to explore
-      </div> */}
-      <div className="relative w-72 h-[300px]">
-        {CARDS.map((card, i) => {
-          return (
-            // ✅ Unique section ref per index — NOT id="parent" on every div
-            <div key={i} className="card absolute">
+    
+      <div
+        ref={container}
+        className="relative h-screen flex items-center justify-center  "
+      >
+      <h1 className="text-xl absolute top-12  font- text-center text-black">
+        Legacy In The Making
+      </h1>
+        <div className=" ">
+          {CARDS.map((card, i) => {
+            return (
+              // ✅ Unique section ref per index — NOT id="parent" on every div
               <div
-                className={`${card.bg} rounded-2xl p-10 shadow-2xl flex flex-col justify-end`}
+                key={i}
+                className="card absolute left-1/2 top-1/2   -translate-x-1/2 -translate-y-1/2  max-w-xl min-h-xl"
               >
-                <span className="text-white/40 text-xs tracking-widest uppercase mb-3">
-                  {card.tag}
-                </span>
-                <h2 className="text-5xl font-black text-white mb-4">
-                  {card.title}
-                </h2>
-                <p className="text-white/70 leading-relaxed">{card.desc}</p>
+                <div
+                  className={`${card.bg} ${card.class} rounded-2xl p-10 shadow-2xl flex flex-col items-center`}
+                >
+                  <img
+                    src={card.image}
+                    alt="card"
+                    className="rounded-xl lg:w-48  4xl:w-56"
+                  />
+                  <h2 className="text-5xl font-black mt-4">{card.title}</h2>
+                  <p className=" leading-relaxed text-center py-5">
+                    {card.desc}
+                  </p>
+                  <p className=" leading-relaxed text-center">{card.desc2}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-
-   
-    </div>
   );
 }

@@ -29,7 +29,6 @@ export default function App() {
       {/* <FeaturedWork /> */}
       <OurServices />
       <SendUsBrief />
-      {/* <LegacyInMaking /> */}\
       <LegacyIn/>
       <SendBrief/>
       <WhatsNew />
