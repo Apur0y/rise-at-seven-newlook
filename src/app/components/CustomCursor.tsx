@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { MdArrowOutward } from 'react-icons/md';
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -76,7 +77,7 @@ export default function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+      className="fixed top-0 left-0 pointer-events-none z-[9999]  hidden md:block"
       style={{ willChange: 'transform' }}
     >
       <div ref={cursorInnerRef} className="transition-transform">
@@ -91,8 +92,8 @@ export default function CustomCursor() {
           </div>
         )}
         {cursorType === 'button' && (
-          <div className="bg-white text-black px-6 py-3 rounded-full -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-medium shadow-lg transition-all duration-300">
-            {cursorText}
+          <div className="bg-teal-200 flex items-center gap-1 text-black px-6 py-3 rounded-full -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-sm  shadow-lg transition-all duration-300">
+            {cursorText}<MdArrowOutward className="mt-1" />
           </div>
         )}
       </div>

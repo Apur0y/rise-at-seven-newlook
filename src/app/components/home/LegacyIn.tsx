@@ -49,7 +49,7 @@ export default function LegacyIn() {
           trigger: container.current,
           start: "top top",
           end: `+=300`, // important!
-          scrub: 2,
+          scrub: 1,
           pin: true,
         },
       });

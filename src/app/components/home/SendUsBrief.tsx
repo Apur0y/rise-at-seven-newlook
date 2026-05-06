@@ -46,7 +46,7 @@ export default function SendUsBrief() {
       if (marqueeRef.current) {
         // smooth interpolation (lerp)
         currentSpeedRef.current +=
-          (targetSpeedRef.current - currentSpeedRef.current) * 0.08;
+          (targetSpeedRef.current - currentSpeedRef.current) * 0.02;
 
         positionRef.current += currentSpeedRef.current;
 
@@ -74,7 +74,7 @@ export default function SendUsBrief() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 md:py-32 bg-black text-white overflow-hidden cursor-button"
+      className="py-14 md:py-20 text-black overflow-hidden cursor-button"
       data-cursor-text="Send Us Your Brief"
     >
       <div className="whitespace-nowrap overflow-hidden">
@@ -85,7 +85,7 @@ export default function SendUsBrief() {
                 .fill(null)
                 .map((_, i) => (
                   <div key={i} className="flex items-center">
-                    <span className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold px-8 md:px-12 hover:text-gray-300 transition-colors duration-300">
+                    <span className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold px-8 md:px-12  transition-colors duration-300">
                       LET'S WORK TOGETHER
                     </span>
                     <span className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">
