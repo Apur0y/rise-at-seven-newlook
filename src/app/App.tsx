@@ -14,6 +14,8 @@ import Footer from './components/home/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import SendBrief from './components/home/SendBrief';
 import LegacyIn from './components/home/LegacyIn';
+import TheFeaturedWork from './components/home/TheFeaturedWork';
+import Step1 from './components/home/TestFeatured';
 
 export default function App() {
   return (
@@ -26,7 +28,9 @@ export default function App() {
       <Banner />
       <AgencyBehind />
       <AboutUs />
-      <FeaturedWork />
+      {/* <FeaturedWork /> */}
+      {/* <TheFeaturedWork/> */}
+      <Step1/>
       <OurServices />
       <SendUsBrief />
       <LegacyIn/>
