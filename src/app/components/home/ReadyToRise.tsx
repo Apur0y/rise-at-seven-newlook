@@ -67,7 +67,7 @@ export default function ReadyToRise() {
   const words = text.split(' ');
 
   return (
-    <section ref={containerRef} className="py-32 md:py-40 bg-black text-white overflow-hidden min-h-screen flex items-center">
+    <section ref={containerRef} className="py-32 md:py-40 text-black bg-white overflow-hidden min-h-screen flex items-center">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
         <div ref={textContainerRef} className="text-center opacity-0">
           <h2 className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-bold leading-none">

@@ -9,7 +9,7 @@ import OurServices from './components/home/OurServices';
 import SendUsBrief from './components/home/SendUsBrief';
 import LegacyInMaking from './components/home/LegacyInMaking';
 import WhatsNew from './components/home/WhatsNew';
-import ReadyToRise from './components/ReadyToRise';
+import ReadyToRise from './components/home/ReadyToRise';
 import Footer from './components/home/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import SendBrief from './components/home/SendBrief';
