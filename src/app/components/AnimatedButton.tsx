@@ -11,21 +11,21 @@ interface AnimatedButtonProps {
 
 export default function AnimatedButton({
   children,
-  className = "",
+  className = "px-6 py-3 text-sm inline-block",
   onClick,
   variant = "outline",
   href,
 }: AnimatedButtonProps) {
   const base =
     variant === "solid"
-      ? "bg-white text-black border border-gray-100"
+      ? "bg-white text-black text-lg border border-gray-100"
       : "bg-transparent text-black border border-white/30 hover:bg-white hover:text-black hover:border-white";
 
   const inner = (
     <span
       className={`
-        relative inline-block overflow-hidden
-        px-6 py-3 text-sm font-medium tracking-wide 
+        relative  overflow-hidden
+         font-medium tracking-wide 
         transition-all duration-300
         rounded-4xl hover:rounded-sm
         ${base} ${className}
