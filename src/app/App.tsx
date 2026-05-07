@@ -18,7 +18,7 @@ import LegacyIn from './components/home/LegacyIn';
 export default function App() {
   return (
     
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-stone-100">
       <SmoothScroll>
       <CustomCursor />
       <AnnouncementBar />
