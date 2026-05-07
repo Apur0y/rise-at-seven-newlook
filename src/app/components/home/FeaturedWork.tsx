@@ -80,7 +80,7 @@ export default function FeaturedWork() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative bg-black text-white" style={{ minHeight: '400vh' }}>
+    <section ref={containerRef} className="relative bg-black text-white mx-6 rounded-3xl"  style={{ minHeight: '400vh' }}>
       <div className="sticky top-0 h-screen featured-work-content">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-full">
           <div className="grid lg:grid-cols-2 gap-16 h-full items-center py-20">

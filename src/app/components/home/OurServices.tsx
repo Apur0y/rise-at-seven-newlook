@@ -71,7 +71,7 @@ export default function OurServices() {
                 {/* Content */}
                 <div className="relative z-10 overflow-hidden">
                   <div
-                    className={`flex items-center gap-3 text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold transition-all duration-200 ease-out   ${
+                    className={`flex items-center gap-3 text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold transition-all duration-200 ease-out   ${
                       isHovered
                         ? "text-white translate-x-8"
                         : "text-black translate-x-0"

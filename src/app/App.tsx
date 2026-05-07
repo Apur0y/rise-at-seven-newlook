@@ -26,7 +26,7 @@ export default function App() {
       <Banner />
       <AgencyBehind />
       <AboutUs />
-      {/* <FeaturedWork /> */}
+      <FeaturedWork />
       <OurServices />
       <SendUsBrief />
       <LegacyIn/>
