@@ -14,7 +14,7 @@ export default function AnimatedText({
   href,
 }: AnimatedButtonProps) {
   const defaultClass =
-    '  text-xl font-medium tracking-wide border border-black overflow-hidden inline-flex';
+    '  text-xl font-medium tracking-wide overflow-hidden inline-flex hover:text-teal-200';
 
   const classes = className || defaultClass;
 

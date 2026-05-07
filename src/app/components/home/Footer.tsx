@@ -1,6 +1,15 @@
 import { MdArrowOutward } from "react-icons/md";
 import AnimatedButton from "../AnimatedButton";
 import AnimatedText from "../AnimatedText";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaInstagram,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa";
+
+import { FaXTwitter } from "react-icons/fa6";
 
 const navigationLinks = [
   "Services",
@@ -26,7 +35,40 @@ const locationLinks = [
   "Contact",
 ];
 
-const socialLinks = ["Tw", "Ln", "Ig"];
+const footerLinks = [
+  "© 2025 Rise at Seven Ltd. All rights reserved",
+  "Company Number 11955187",
+  "VAT Registered GB 322402945",
+  "Privacy Policy",
+  "Terms & conditions",
+];
+
+const socialLinks = [
+  {
+    icon: <FaFacebookF />,
+    href: "#",
+  },
+  {
+    icon: <FaLinkedinIn />,
+    href: "#",
+  },
+  {
+    icon: <FaInstagram />,
+    href: "#",
+  },
+  {
+    icon: <FaYoutube />,
+    href: "#",
+  },
+  {
+    icon: <FaXTwitter />,
+    href: "#",
+  },
+  {
+    icon: <FaTiktok />,
+    href: "#",
+  },
+];
 
 export default function Footer() {
   return (
@@ -41,25 +83,27 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Your Email Address"
-              className="flex-1 px-4 py-5 bg-white/10 rounded-full outline-none focus:bg-white/20 transition-colors text-2xl"
+              className="flex-1 px-4 py-4 bg-white/10 rounded-full outline-none focus:bg-white/20 transition-colors text-xl"
             />
 
-           
-              <div className="bg-teal-200  rounded-full p-4 absolute right-1 top-1/2 -translate-y-1/2">
-                <MdArrowOutward className="text-xl " />
-              </div>
-          
+            <div className="bg-teal-200  rounded-full p-3.5 mr-1 absolute right-1 top-1/2 -translate-y-1/2 cursor-pointer hover:bg-white transition-all duration-300 hover:rotate-90">
+              <MdArrowOutward className="text-xl text-black" />
+            </div>
           </div>
 
           {/* Social */}
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4 border-l">
             {socialLinks.map((item, index) => (
               <a
                 key={index}
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                href={item.href}
+                className="group flex items-center gap-2 px-1 py-0.5 bg-white text-black rounded-2xl overflow-hidden transition-all duration-300 hover:rounded"
               >
-                <span className="text-sm">{item}</span>
+                <span className="text-xs transition-transform duration-300 ">
+                  {item.icon}
+                </span>
+
+                <MdArrowOutward className="text-sm transition-all duration-300  " />
               </a>
             ))}
           </div>
@@ -67,7 +111,7 @@ export default function Footer() {
 
         <div className="flex justify-between col-span-12 flex-wrap | md:flex-row md:col-span-11 | lg:col-span-6 lg:col-start-6 gap-y-10">
           {/* Navigation */}
-          <div className="space-y-4">
+          <div className="space-y-4 border-l border-white/20 pl-3">
             <ul className="space-y-1">
               {navigationLinks.map((item, index) => (
                 <li key={index}>
@@ -78,7 +122,7 @@ export default function Footer() {
           </div>
 
           {/* Company */}
-          <div className="">
+          <div className="border-l border-white/20 pl-3">
             <ul className="space-y-1">
               {companyLinks.map((item, index) => (
                 <li key={index}>
@@ -89,7 +133,7 @@ export default function Footer() {
           </div>
 
           {/* Locations */}
-          <div className="space-y-4">
+          <div className="space-y-1 border-l border-white/20 pl-3">
             <ul className="space-y-1">
               {locationLinks.map((item, index) => (
                 <li key={index}>
@@ -101,11 +145,11 @@ export default function Footer() {
         </div>
 
         {/* Big Text */}
-        <div className="col-span-12 mt-10  | lg:mt-32">
+        <div className="col-span-12 mt-10 lg:mt-32">
           <svg
             className="w-full h-full object-contain fill-current"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 180 21"
+            viewBox="0 0 168 21"
             fill="none"
           >
             <path d="M91.3152 5.40061C91.3152 3.94241 92.5306 2.67359 93.9881 2.67359C95.7162 2.67359 96.797 3.83419 96.797 5.56225H99.7127C99.7127 2.1873 97.3096 0 93.9874 0C90.9371 0 88.3988 2.32257 88.3988 5.42766C88.3988 9.31596 90.883 10.2344 93.9874 11.4221C95.6627 12.07 97.2007 12.5563 97.2007 14.6895C97.2007 16.634 95.9867 18.0651 93.9874 18.0651C91.8813 18.0651 90.7477 16.3905 90.7477 14.446H87.832C87.832 18.0651 90.3426 20.7381 93.9874 20.7381C97.6323 20.7381 100.118 18.2816 100.118 14.6895C100.118 7.10161 91.3145 9.64061 91.3145 5.40061H91.3152Z"></path>
@@ -127,22 +171,42 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="col-span-12 flex justify-between flex-col mt-10 items-end | md:flex-row  | lg:items-center lg:mt-0">
-          <div>
-            <p>© 2025 Rise at Seven Ltd. All rights reserved</p>
-            <p>Company Number 11955187 | VAT Registered GB 322402945</p>
+          <div className="flex flex-wrap items-center gap-3 text-xs font-light">
+            {footerLinks.map((item, index) => {
+              const isUnderlined =
+                item === "Privacy Policy" || item === "Terms & conditions";
+
+              return (
+                <div key={index} className="flex items-center gap-3">
+                  <p
+                    className={`relative w-fit cursor-pointer ${
+                      isUnderlined ? "group" : ""
+                    }`}
+                  >
+                    {item}
+
+                    {isUnderlined && (
+                      <span className="absolute left-0 -bottom-1 h-[1px] w-full bg-white scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 group-hover:origin-left group-hover:transition-transform group-hover:duration-300 group-[&:not(:hover)]:origin-right group-[&:not(:hover)]:scale-x-0" />
+                    )}
+                  </p>
+
+                  {index !== footerLinks.length - 1 && (
+                    <span className="w-1 h-1 rounded-full bg-white/60" />
+                  )}
+                </div>
+              );
+            })}
           </div>
 
-          <div className="flex gap-6">
-            {["Privacy Policy", "Terms & conditions"].map((item, index) => (
-              <AnimatedText
-                key={index}
-                href="#"
-                className="text-gray-400 hover:text-white text-sm"
-              >
-                {item}
-              </AnimatedText>
-            ))}
-          </div>
+          <a
+            href="https://apur0y.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-light relative w-fit cursor-pointer after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Website Made By Apu Roy
+          </a>
+          {/* //navigate to profile */}
         </div>
       </div>
     </footer>
