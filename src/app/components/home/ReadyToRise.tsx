@@ -35,21 +35,32 @@ export default function ReadyToRise() {
         words,
         {
           y: -150,
-          opacity: 0,
-          rotate: 10,
+          opacity: 1,
+       rotate: 10,
         },
         {
-          y: 0,
-          opacity: 1,
-          rotate: 0,
+          
+          keyframes: [
+      {
+        y: 60,
+        opacity: 1,
+         rotate: 0,
+        duration: 0.4,
+      },
+      {
+        y: 0,
+        rotate: 0,
+        duration: 0.4,
+      },
+    ],
           stagger: 0.15,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: container.current,
             start: 'top 45%',
             end: 'top -15%',
-            scrub: true,
-            markers: true,
+            scrub: 0.01,
+           
           },
         }
       )
