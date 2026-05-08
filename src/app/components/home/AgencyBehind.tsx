@@ -137,7 +137,7 @@ export default function AgencyBehind() {
           {[...COMPANIES, ...COMPANIES, ...COMPANIES].map((company, index) => (
             <div
               key={index}
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold opacity-15 hover:opacity-60 transition-opacity duration-300 cursor-pointer select-none"
+              className="text-4xl font-bold opacity-15 hover:opacity-60 transition-opacity duration-300 cursor-pointer select-none"
             >
               {company}
             </div>

@@ -102,6 +102,7 @@ export default function OurServices() {
             <AnimatedButton variant="solid" className="w-full">View all services</AnimatedButton>
           </div>
       </div>
+      
     </section>
   );
 }

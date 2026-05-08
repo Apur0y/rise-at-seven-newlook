@@ -3,7 +3,7 @@ import gsap from "gsap";
 
 const BANNER_IMAGES = [
   "https://images.unsplash.com/photo-1538329972958-465d6d2144ed?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
+  "https://images.pexels.com/photos/14915098/pexels-photo-14915098.jpeg",
   "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
   "https://images.unsplash.com/photo-1497215728101-856f4ea42174",
   "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",

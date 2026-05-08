@@ -54,14 +54,14 @@ export default function Navbar() {
       }`}
       style={{ top: scrollY <= 30 ? "48px" : "0" }}
     >
-      <div className=" mx-auto px-8  py-2">
+      <div className=" mx-auto px-6  py-2">
         <div className="flex items-center justify-between">
-          <div className=" ">
+          <div className=" max-w-auto  ">
             <svg
-              className="w-full h-full object-contain fill-current"
+              className="w-full h-full block fill-current"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 310 21"
-              fill="none"
+              viewBox="0 0 320 21"
+              // fill="none"
             >
               <path d="M91.3152 5.40061C91.3152 3.94241 92.5306 2.67359 93.9881 2.67359C95.7162 2.67359 96.797 3.83419 96.797 5.56225H99.7127C99.7127 2.1873 97.3096 0 93.9874 0C90.9371 0 88.3988 2.32257 88.3988 5.42766C88.3988 9.31596 90.883 10.2344 93.9874 11.4221C95.6627 12.07 97.2007 12.5563 97.2007 14.6895C97.2007 16.634 95.9867 18.0651 93.9874 18.0651C91.8813 18.0651 90.7477 16.3905 90.7477 14.446H87.832C87.832 18.0651 90.3426 20.7381 93.9874 20.7381C97.6323 20.7381 100.118 18.2816 100.118 14.6895C100.118 7.10161 91.3145 9.64061 91.3145 5.40061H91.3152Z"></path>
               <path d="M109.209 4.99609C104.834 4.99609 101.539 8.53405 101.539 12.8539C101.539 17.1737 104.888 20.738 109.155 20.738C112.422 20.738 115.203 18.713 116.337 15.662H113.529C112.718 17.2278 111.017 18.1733 109.262 18.1733C106.806 18.1733 104.915 16.4182 104.348 14.0963H116.743C116.797 13.6371 116.823 13.1508 116.823 12.6922C116.823 8.47926 113.447 4.99609 109.209 4.99609ZM104.348 11.9361C104.509 9.47823 106.751 7.56147 109.181 7.56147C111.611 7.56147 113.853 9.47823 114.014 11.9361H104.348Z"></path>
@@ -82,32 +82,37 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-8">
             <NavItem label="Services" />
-            <NavItem label="Work" />
+            <NavItem label="Industries" />
+            <NavItem label="International" />
             <NavItem label="About" />
+            <NavItem label="Work" />
             <NavItem label="Careers" />
-            <NavItem label="Blog" />
+            <NavItem label="Blog & Resources" />
             <NavItem label="Webinar" />
           </div>
           {/* <AnimatedButton>Get In Touch</AnimatedButton> */}
 
-          <button className=" rounded-full cursor-pointer font-medium hover-button overflow-hidden relative group transition-all duration-300 hover:rounded-md ">
-            <span
-              className={` z-10  px-5 py-3 flex items-center gap-2 ${
+          <button
+            className={`relative overflow-hidden rounded-3xl hover:rounded transition-all  group cursor-pointer ${
                 hasGlass && scrollY > 30
                   ? "bg-black text-white"
                   : "bg-white text-black"
-              } transition-transform duration-200 group-hover:-translate-y-full`}
+              }`}
+          >
+            
+            <span
+              className={`flex items-center justify-center gap-2 px-4 py-3 transition-transform duration-300 group-hover:-translate-y-full `}
             >
-              Get In Touch <MdArrowOutward className="mt-1" />
+              Get In Touch
+              <MdArrowOutward className="text-lg" />
             </span>
+
+           
             <span
-              className={`absolute inset-0 ${
-                hasGlass && scrollY > 30
-                  ? "bg-black text-white"
-                  : "bg-white text-black"
-              }  flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 `}
+              className={`absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-300 group-hover:translate-y-0`}
             >
-              Get In Touch <MdArrowOutward className="mt-1" />
+              Get In Touch
+              <MdArrowOutward className="text-lg" />
             </span>
           </button>
         </div>
@@ -119,8 +124,9 @@ export default function Navbar() {
 function NavItem({ label }: { label: string }) {
   return (
     <div className="group relative cursor-pointer">
-      <span className="text-sm font-medium  hover:text-white transition-colors duration-200">
-        {label}+
+      <span className="text-sm lg:text-base font-medium  hover:text-white transition-colors duration-200">
+        {label== "Work" || label== "Careers" || label== "Webinar"? label: `${label}+`}
+        {/* {label}+ */}
       </span>
       <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
     </div>

@@ -48,7 +48,7 @@ export default function SendBrief() {
     document.dispatchEvent(new CustomEvent("cursor:default"));
   };
 
-  const TEXT = "Send Us Your Brief · Send Us Your Brief · Send Us Your Brief · ";
+  const TEXT = `Not Algorithms  Chasing Consumers `;
 
   return (
     <section
@@ -66,24 +66,77 @@ export default function SendBrief() {
         cursor: "none",
       }}
     >
-      <div ref={trackRef} style={{ display: "flex", width: "max-content", willChange: "transform" }}>
+      <div
+        ref={trackRef}
+        style={{
+          display: "flex",
+          width: "max-content",
+          willChange: "transform",
+        }}
+      >
         {[...Array(3)].map((_, i) => (
-          <span
+          <div
             key={i}
             style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(56px, 9vw, 120px)",
-              fontWeight: 900,
-              letterSpacing: "-0.04em",
-              WebkitTextStroke: "1px rgba(255,255,255,0.25)",
-              whiteSpace: "nowrap",
+              display: "flex",
+              alignItems: "center",
+              gap: "40px",
               paddingRight: "60px",
-              lineHeight: 1,
-              userSelect: "none",
+              whiteSpace: "nowrap",
             }}
           >
-            {TEXT}
-          </span>
+            <span
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: "clamp(56px, 9vw, 120px)",
+                fontWeight: 900,
+                letterSpacing: "-0.04em",
+                WebkitTextStroke: "1px rgba(255,255,255,0.25)",
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              Not Algorithms
+            </span>
+
+            <img
+              src="https://images.pexels.com/photos/8980243/pexels-photo-8980243.jpeg"
+              alt=""
+              style={{
+                width: "120px",
+                height: "80px",
+                objectFit: "cover",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            />
+
+            <span
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: "clamp(56px, 9vw, 120px)",
+                fontWeight: 900,
+                letterSpacing: "-0.04em",
+                WebkitTextStroke: "1px rgba(255,255,255,0.25)",
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              Chasing Consumers
+            </span>
+
+            <img
+              src="https://images.pexels.com/photos/6976660/pexels-photo-6976660.jpeg"
+              alt=""
+              style={{
+                width: "120px",
+                height: "80px",
+                objectFit: "cover",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            />
+          </div>
         ))}
       </div>
     </section>
