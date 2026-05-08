@@ -1,89 +1,59 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 export default function ReadyToRise() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textContainerRef = useRef<HTMLDivElement>(null);
-  const wordsRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const container = useRef<HTMLDivElement>(null)
+  const text = 'Ready to Rise at Seven?'.split('')
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
     const ctx = gsap.context(() => {
+      const words = gsap.utils.toArray('.word')
+
       gsap.fromTo(
-        textContainerRef.current,
-        { x: '100%', opacity: 0 },
+        words,
         {
-          x: 0,
+          y: 150,
+          opacity: 0,
+          rotate: 10,
+        },
+        {
+          y: 0,
           opacity: 1,
+          rotate: 0,
+          stagger: 0.15,
+          ease: 'power3.out',
           scrollTrigger: {
-            trigger: container,
-            start: 'top center',
-            end: 'center center',
-            scrub: 1,
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-      wordsRef.current.forEach((word, index) => {
-        gsap.fromTo(
-          word,
-          {
-            x: -150,
-            y: -200,
-            opacity: 0,
-            rotation: -20,
-            scale: 0.5
+            trigger: container.current,
+            start: 'top 70%',
+            end: 'top 20%',
+            scrub: true,
+            markers: true,
           },
-          {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            rotation: 0,
-            scale: 1,
-            ease: 'bounce.out',
-            scrollTrigger: {
-              trigger: container,
-              start: 'top center',
-              end: 'center center',
-              scrub: 1,
-              toggleActions: 'play none none reverse'
-            },
-            delay: index * 0.15
-          }
-        );
-      });
-    }, container);
+        }
+      )
+    }, container)
 
-    return () => ctx.revert();
-  }, []);
-
-  const text = 'READY TO RISE?';
-  const words = text.split(' ');
+    return () => ctx.revert()
+  }, [])
 
   return (
-    <section ref={containerRef} className="py-32 md:py-40 text-black bg-white overflow-hidden min-h-screen flex items-center">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
-        <div ref={textContainerRef} className="text-center opacity-0">
-          <h2 className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-bold leading-none">
-            {words.map((word, index) => (
-              <span
-                key={index}
-                ref={(el) => (wordsRef.current[index] = el)}
-                className="inline-block mx-3 md:mx-6 opacity-0"
-                style={{ transformOrigin: 'center center' }}
-              >
-                {word}
-              </span>
-            ))}
-          </h2>
-        </div>
-      </div>
-    </section>
-  );
+    <div
+      ref={container}
+      className="overflow-hidden flex items-center h-[400px]"
+    >
+      <h2 className="text-[250px] whitespace-nowrap font-bold leading-none">
+        {text.map((word, index) => (
+          <span
+            key={index}
+            className="word inline-block mr-12"
+          >
+            {word}
+          </span>
+        ))}
+      </h2>
+    </div>
+  )
 }

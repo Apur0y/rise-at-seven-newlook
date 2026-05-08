@@ -14,6 +14,7 @@ import SendBrief from './components/home/SendBrief';
 import LegacyIn from './components/home/LegacyIn';
 import TheFeaturedWork from './components/home/TheFeaturedWork';
 import ReadyToRise from './components/home/ReadyToRise';
+import ReadyToRise0 from './components/home/ReadyToRise0';
 
 
 export default function App() {
@@ -28,13 +29,14 @@ export default function App() {
       <AgencyBehind />
       <AboutUs />
       {/* <FeaturedWork /> */}
-      {/* <TheFeaturedWork/> */}
+      <TheFeaturedWork/>
       <OurServices />
       {/* <SendUsBrief /> */}
-      <SendBrief/>
+      {/* <SendBrief/> */}
       {/* <LegacyIn/> */}
       <WhatsNew />
       <ReadyToRise />
+      {/* <ReadyToRise0 /> */}
       <Footer />
       </SmoothScroll>
     </div>

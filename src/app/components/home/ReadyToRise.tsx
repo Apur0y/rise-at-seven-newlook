@@ -6,10 +6,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function ReadyToRise() {
   const container = useRef<HTMLDivElement>(null)
-  const text = useRef<HTMLHeadingElement>(null)
+  const text = useRef<HTMLHeadingElement>(null);
+  const charecter = useRef<HTMLSpanElement>(null);
+
+    const maintext = 'Ready  to  Rise  at  Seven?'.split('') // Replace spaces with non-breaking spaces
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+        const words = gsap.utils.toArray('.word')
       gsap.fromTo(
         text.current,
         {
@@ -23,7 +27,29 @@ export default function ReadyToRise() {
             start: 'top 50%',
             end: 'top -20%',
             scrub: true,
-            markers: true, // remove in production
+            // remove in production
+          },
+        }
+      )
+      gsap.fromTo(
+        words,
+        {
+          y: -150,
+          opacity: 0,
+          rotate: 10,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotate: 0,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: container.current,
+            start: 'top 45%',
+            end: 'top -15%',
+            scrub: true,
+            markers: true,
           },
         }
       )
@@ -37,14 +63,23 @@ export default function ReadyToRise() {
       ref={container}
       className="overflow-hidden flex items-center"
       style={{
-        height: '400px',
+        height: '800px',
       }}
     >
       <h2
         ref={text}
         className="text-[250px] whitespace-nowrap font-bold"
       >
-        Ready to Rise at Seven?
+       
+        {maintext.map((char: string, index: number) => (
+          <span
+          ref={charecter}
+            key={index}
+            className="word inline-block   mr-4"
+          >
+            {char}
+          </span>
+        ))}
       </h2>
     </div>
   )
