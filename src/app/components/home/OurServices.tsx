@@ -36,7 +36,7 @@ export default function OurServices() {
             />
             <span>Services</span>
           </h2>
-          <div className="hidden md:relative">
+          <div className="hidden md:flex">
             <AnimatedButton variant="solid">View all services</AnimatedButton>
           </div>
         </div>

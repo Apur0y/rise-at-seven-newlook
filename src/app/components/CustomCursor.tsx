@@ -85,7 +85,7 @@ export default function CustomCursor() {
           <div className="w-2 h-2 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200" />
         )} */}
         {cursorType === 'arrow' && (
-          <div className="w-14 h-14 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-300">
+          <div className="w-14 h-14 bg-teal-100 rounded-full -rotate-45 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-300">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M5 12h14m-7-7l7 7-7 7" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

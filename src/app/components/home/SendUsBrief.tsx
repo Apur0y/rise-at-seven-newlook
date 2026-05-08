@@ -75,7 +75,7 @@ export default function SendUsBrief() {
     <section
       ref={sectionRef}
       className="py-14 md:py-20 text-black overflow-hidden cursor-button"
-      data-cursor-text="Send Us Your Brief"
+      data-cursor-text="CO Send Us Your Brief"
     >
       <div className="whitespace-nowrap overflow-hidden">
         <div ref={marqueeRef} className="flex">
@@ -86,7 +86,7 @@ export default function SendUsBrief() {
                 .map((_, i) => (
                   <div key={i} className="flex items-center">
                     <span className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold px-8 md:px-12  transition-colors duration-300">
-                      LET'S WORK TOGETHER
+                     Co LET'S WORK TOGETHER
                     </span>
                     <span className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">
                       •

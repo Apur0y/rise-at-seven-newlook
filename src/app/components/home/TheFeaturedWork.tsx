@@ -165,7 +165,7 @@ export default function FeaturedWork() {
                   {PROJECTS.map((project, i) => (
                     <div
                       key={i}
-                      ref={(el) => (itemRefs.current[i] = el)}
+                      ref={(el) => {itemRefs.current[i] = el;}}
                       className="flex flex-col justify-center pr-8"
                       style={{
                         height: `${ITEM_HEIGHT}px`,
@@ -206,7 +206,7 @@ export default function FeaturedWork() {
               {PROJECTS.map((project, i) => (
                 <div
                   key={i}
-                  ref={(el) => (imagesRef.current[i] = el)}
+                  ref={(el) => {imagesRef.current[i] = el;}}
                   className="group absolute inset-0 rounded-2xl overflow-hidden cursor-pointer"
                   style={{
                     opacity: i === 0 ? 1 : 0,
