@@ -68,6 +68,7 @@ export default function SendBrief() {
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       className="overflow-hidden py-5 cursor-none"
+        data-cursor-text="Send Us Your Brief"
     >
       <div
         ref={trackRef}

@@ -7,14 +7,13 @@ import AboutUs from './components/home/AboutUs';
 import FeaturedWork from './components/home/FeaturedWork';
 import OurServices from './components/home/OurServices';
 import SendUsBrief from './components/home/SendUsBrief';
-import LegacyInMaking from './components/home/LegacyInMaking';
 import WhatsNew from './components/home/WhatsNew';
-import ReadyToRise from './components/home/ReadyToRise';
 import Footer from './components/home/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import SendBrief from './components/home/SendBrief';
 import LegacyIn from './components/home/LegacyIn';
 import TheFeaturedWork from './components/home/TheFeaturedWork';
+import ReadyToRise from './components/home/ReadyToRise';
 
 
 export default function App() {
@@ -29,11 +28,11 @@ export default function App() {
       <AgencyBehind />
       <AboutUs />
       {/* <FeaturedWork /> */}
-      <TheFeaturedWork/>
+      {/* <TheFeaturedWork/> */}
       <OurServices />
       {/* <SendUsBrief /> */}
       <SendBrief/>
-      <LegacyIn/>
+      {/* <LegacyIn/> */}
       <WhatsNew />
       <ReadyToRise />
       <Footer />
