@@ -18,6 +18,7 @@ import ReadyToRise0 from './components/home/ReadyToRise0';
 
 
 export default function App() {
+      
   return (
     
     <div className="min-h-screen bg-stone-100">
@@ -28,8 +29,8 @@ export default function App() {
       <Banner />
       <AgencyBehind />
       <AboutUs />
-      <FeaturedWork />
-      {/* <TheFeaturedWork/> */}
+      {/* <FeaturedWork /> */}
+      <TheFeaturedWork/>
       <OurServices />
       {/* <SendUsBrief /> */}
       {/* <SendBrief/> */}

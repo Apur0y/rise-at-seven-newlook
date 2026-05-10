@@ -33,7 +33,7 @@ const PROJECTS = [
 
 const ITEM_HEIGHT = 110;
 
-export default function FeaturedWork() {
+export default function TheFeaturedWork() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -131,8 +131,9 @@ export default function FeaturedWork() {
       ref={containerRef}
       className="relative bg-black text-white mx-6  rounded-3xl"
       style={{ minHeight: "400vh" }}
+      id="featured"
     >
-      <div className="sticky top-0 h-screen featured-work-content">
+      <div  className="sticky top-0 h-screen featured-work-content">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-full">
           <div className="grid lg:grid-cols-2 gap-16 h-full items-center justify-center ">
 

@@ -13,7 +13,23 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const feature = document.querySelector("#featured");
+
+      if (!feature) return;
+
+      const rect = feature.getBoundingClientRect();
+
+      const isInside = rect.top <= 0 && rect.bottom > 0;
+
+
+      
       setScrollY(currentScrollY);
+
+       if (isInside) {
+      setIsVisible(false);
+      lastScrollY.current = currentScrollY;
+      return;
+    }
 
       if (currentScrollY > 30) {
         if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
@@ -94,12 +110,11 @@ export default function Navbar() {
 
           <button
             className={`relative overflow-hidden rounded-3xl hover:rounded transition-all  group cursor-pointer ${
-                hasGlass && scrollY > 30
-                  ? "bg-black text-white"
-                  : "bg-white text-black"
-              }`}
+              hasGlass && scrollY > 30
+                ? "bg-black text-white"
+                : "bg-white text-black"
+            }`}
           >
-            
             <span
               className={`flex items-center justify-center gap-2 px-4 py-3 transition-transform duration-300 group-hover:-translate-y-full `}
             >
@@ -107,7 +122,6 @@ export default function Navbar() {
               <MdArrowOutward className="text-lg" />
             </span>
 
-           
             <span
               className={`absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-300 group-hover:translate-y-0`}
             >
@@ -125,7 +139,9 @@ function NavItem({ label }: { label: string }) {
   return (
     <div className="group relative cursor-pointer">
       <span className="text-sm lg:text-base font-medium  hover:text-white transition-colors duration-200">
-        {label== "Work" || label== "Careers" || label== "Webinar"? label: `${label}+`}
+        {label == "Work" || label == "Careers" || label == "Webinar"
+          ? label
+          : `${label}+`}
         {/* {label}+ */}
       </span>
       <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
