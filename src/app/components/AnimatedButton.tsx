@@ -18,7 +18,7 @@ export default function AnimatedButton({
 }: AnimatedButtonProps) {
   const base =
     variant === "solid"
-      ? "bg-white text-black text-lg border border-gray-100"
+      ? "bg-white text-black text-[16px] border border-gray-100 py-2"
       : "bg-transparent text-black border border-white/30 hover:bg-white hover:text-black hover:border-white";
 
   const inner = (
@@ -32,7 +32,7 @@ export default function AnimatedButton({
       `}
       style={{ fontFamily: "var(--font-sans)" }}
     >
-      <span className="relative block h-[1.2em] overflow-hidden">
+      <span className="relative block  overflow-hidden">
         {/* Main */}
         <span className="flex items-center gap-2 whitespace-nowrap transition-transform duration-300 group-hover:-translate-y-full">
           {children}

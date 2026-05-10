@@ -199,6 +199,10 @@ export default function Banner() {
                 
       </div>
       </div>
+
+      <h1>Organic media planners creating, distributing & optimising
+search-first content for SEO, Social, PR, Ai and LLM search
+</h1>
     </section>
   );
 }
