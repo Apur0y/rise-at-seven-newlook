@@ -15,6 +15,7 @@ import LegacyIn from './components/home/LegacyIn';
 import TheFeaturedWork from './components/home/TheFeaturedWork';
 import ReadyToRise from './components/home/ReadyToRise';
 import ReadyToRise0 from './components/home/ReadyToRise0';
+import PageReveal from './components/PageTransition';
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
   return (
     
     <div className="min-h-screen bg-stone-100">
+        {/* <PageReveal/> */}
       <SmoothScroll>
       <CustomCursor />
       <AnnouncementBar />
@@ -40,6 +42,8 @@ export default function App() {
       {/* <ReadyToRise0 /> */}
       <Footer />
       </SmoothScroll>
+
+    
     </div>
   );
 }
