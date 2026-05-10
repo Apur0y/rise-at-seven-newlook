@@ -17,10 +17,10 @@ export default function ReadyToRise() {
       gsap.fromTo(
         text.current,
         {
-          x: 1900,
+            x: () => window.innerWidth,
         },
         {
-          x: -1600,
+           x: () => -text.current!.offsetWidth,
           ease: 'none',
           scrollTrigger: {
             trigger: container.current,

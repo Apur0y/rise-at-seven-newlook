@@ -74,14 +74,14 @@ export default function TheFeaturedWork() {
           const progress = self.progress;
           const rawIndex = progress * (images.length - 1);
           const index = Math.round(self.progress * (images.length - 1));
+          const MOVE_DISTANCE = window.innerWidth < 1000 ? window.innerWidth < 800 ? window.innerWidth < 420 ?250 :400 : 700 : 500;
 
           images.forEach((title, i) => {
             gsap.to(title, {
-              y: (i - rawIndex) * 500,
+              y: (i - rawIndex) * MOVE_DISTANCE,
               duration: 0.3,
             });
           });
-
           // Slide track
           gsap.to(track, {
             y: -(raw * ITEM_HEIGHT),
@@ -104,117 +104,127 @@ export default function TheFeaturedWork() {
 
   return (
     <div>
-    <section
-      ref={containerRef}
-      className="relative  text-white mx-6  rounded-3xl"
-      style={{ minHeight: "400vh" }}
-      id="featured"
-    >
-      <div className="sticky top-7 bottom-7 h-[92vh]  overflow-hidden featured-work-content bg-neutral-950 rounded-3xl ">
-        <div className=" px-6 lg:px-12 h-full ">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 h-full items-center justify-center ">
-            {/* LEFT: title carousel */}
-            <div className="flex flex-col justify-center h-full">
-              <h2 className="text-base md:text-xl font-bold ">Featured Work</h2>
+      <section
+        ref={containerRef}
+        className="relative  text-white mx-6  rounded-3xl"
+        style={{ minHeight: "400vh" }}
+        id="featured"
+      >
+        <div className="sticky top-7 bottom-7 h-[92vh]  overflow-hidden featured-work-content bg-neutral-950 rounded-3xl ">
+          <div className=" px-6 lg:px-12 h-full ">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 h-full items-center justify-center ">
+              {/* LEFT: title carousel */}
+              <div className="hidden xl:flex flex-col justify-center h-full">
+                <h2 className="text-base md:text-xl font-bold ">
+                  Featured Work
+                </h2>
 
-              <div
-                className=" relative overflow-hidden"
-                style={{ height: `${ITEM_HEIGHT * 5}px` }}
-              >
-                {/* Scrolling track */}
                 <div
-                  ref={trackRef}
-                  className="absolute w-full"
-                  style={{
-                    top: `${ITEM_HEIGHT * 2}px`,
-                    willChange: "transform",
-                  }}
+                  className=" relative overflow-hidden"
+                  style={{ height: `${ITEM_HEIGHT * 5}px` }}
                 >
-                  {PROJECTS.map((project, i) => (
-                    <div
-                      key={i}
-                      ref={(el) => {
-                        itemRefs.current[i] = el;
-                      }}
-                      className="flex   pr-8 pl-9 cursor-pointer justify-between"
-                      style={{
-                        height: "auto",
-                        transformOrigin: "left center",
-                        willChange: "transform, opacity",
-                      }}
-                      // onMouseEnter={() => setActiveIndex(i)}
-                      onMouseOver={() => setActiveIndex(i)}
-                      onMouseLeave={() => setActiveIndex(-1)}
-                    >
-                      <h3
-                        style={{
-                          transform: `translateX(${activeIndex === i ? 0 : -10}px)`,
-                        }}
-                        className="text-4xl lg:text-6xl font-extrabold text-white leading-tight text-wrap transition-transform duration-300 ease-out"
-                      >
-                        {project.title}
-                      </h3>
-                      <h3 className="text-lg text-white/70">
-                        {project.timeline}
-                      </h3>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Fade masks */}
-                <div className="absolute inset-x-0 top-0 z-20 pointer-events-none h-[220px] bg-gradient-to-b from-neutral-950 via-neutral-950 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 z-20 pointer-events-none h-[220px] bg-gradient-to-t from-neutral-950 via-neutral-950 to-transparent" />
-              </div>
-            </div>
-
-            {/* RIGHT: image panel */}
-            <div className="relative h-[400px]">
-              {PROJECTS.map((project, i) => (
-                <div
-                  key={i}
-                  className="group image absolute w-full rounded-2xl overflow-hidden cursor-arrow "
-                >
-                  {/* Image with zoom on hover */}
-                  <img src={project.image} alt={project.title} />
-                  <p className="text-2xl md:text-4xl font-bold absolute top-5 left-5 z-20 text-black  transition-all duration-500  opacity-0  group-hover:opacity-100">
-                    {project.description}
-                  </p>
-                  <p
-                    className={` text-2xl md:text-4xl font-bold absolute top-5 left-5 z-20 text-black transition-all duration-500 ease-out ${activeIndex === i ? "opacity-100 " : "opacity-0 "}`}
-                  >
-                    {project.description}
-                  </p>{" "}
+                  {/* Scrolling track */}
                   <div
+                    ref={trackRef}
+                    className="absolute w-full"
                     style={{
-                      backgroundColor: project.color,
-                      transform: `translate(-50%, 50%) scale(${activeIndex !== i ? 0 : 45})`,
+                      top: `${ITEM_HEIGHT * 2}px`,
+                      willChange: "transform",
                     }}
-                    className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
+                  >
+                    {PROJECTS.map((project, i) => (
+                      <div
+                        key={i}
+                        ref={(el) => {
+                          itemRefs.current[i] = el;
+                        }}
+                        className="flex   pr-8 pl-9 cursor-pointer justify-between"
+                        style={{
+                          height: "auto",
+                          transformOrigin: "left center",
+                          willChange: "transform, opacity",
+                        }}
+                        // onMouseEnter={() => setActiveIndex(i)}
+                        onMouseOver={() => setActiveIndex(i)}
+                        onMouseLeave={() => setActiveIndex(-1)}
+                      >
+                        <h3
+                          style={{
+                            transform: `translateX(${activeIndex === i ? 0 : -10}px)`,
+                          }}
+                          className="text-4xl lg:text-6xl font-extrabold text-white leading-tight text-wrap transition-transform duration-300 ease-out"
+                        >
+                          {project.title}
+                        </h3>
+                        <h3 className="text-lg text-white/70">
+                          {project.timeline}
+                        </h3>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Fade masks */}
+                  <div className="absolute inset-x-0 top-0 z-20 pointer-events-none h-[220px] bg-gradient-to-b from-neutral-950 via-neutral-950 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 z-20 pointer-events-none h-[220px] bg-gradient-to-t from-neutral-950 via-neutral-950 to-transparent" />
+                </div>
+              </div>
+
+              {/* RIGHT: image panel */}
+              <div className="relative  lg:h-[400px]">
+                {PROJECTS.map((project, i) => (
+                  <div
+                    key={i}
+                    className="group image absolute w-full rounded-2xl overflow-hidden cursor-arrow "
+                  >
+                    {/* Image with zoom on hover */}
+                    <img src={project.image} alt={project.title} />
+                    <p className="text-2xl md:text-4xl font-bold absolute top-5 left-5 z-20 text-black  transition-all duration-500  opacity-0  group-hover:opacity-100">
+                      {project.description}
+                    </p>
+                    <p
+                      className={` text-2xl md:text-4xl font-bold absolute top-5 left-5 z-20 text-black transition-all duration-500 ease-out ${activeIndex === i ? "opacity-100 " : "opacity-0 "}`}
+                    >
+                      {project.description}
+                    </p>{" "}
+                    <div
+                      style={{
+                        backgroundColor: project.color,
+                        transform: `translate(-50%, 50%) scale(${activeIndex !== i ? 0 : 45})`,
+                      }}
+                      className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
                                  w-8 h-8 rounded-full 
                                  transition-transform duration-400 ease-out"
-                  />
-                  <div
-                    className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
+                    />
+                    <div
+                      className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
                                  w-8 h-8 rounded-full scale-0 group-hover:scale-[45]
                                  transition-transform duration-400 ease-out"
-                    style={{ backgroundColor: project.color }}
-                  />
-                  {/* Text content */}
-                  <div className="relative hidden  z-10 h-full hover:flex flex-col justify-end p-8 text-white">
-                    <h2 className="text-4xl font-bold">{project.title}</h2>
-                    <p className="mt-2 text-white/70">{project.description}</p>
+                      style={{ backgroundColor: project.color }}
+                    />
+                    {/* Text content */}
+                    <div className="relative hidden  z-10 h-full hover:flex flex-col justify-end p-8 text-white">
+                      <h2 className="text-4xl font-bold">{project.title}</h2>
+                      <p className="mt-2 text-white/70">
+                        {project.description}
+                      </p>
+                    </div>
+                    {/* Mobile Section */}
+                    <div className="absolute bottom-5 left-4 group-hover:hidden">
+                      <p className="mt-2 text-white/70">
+                        {project.timeline}
+                      </p>
+                      <h2 className="text-4xl font-bold">{project.title}</h2>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
+      </section>
+      <div className="flex items-center justify-center">
+        <AnimatedButton variant="solid">Explore Our Work</AnimatedButton>
       </div>
-    </section>
-    <div className="flex items-center justify-center">
-
-      <AnimatedButton variant="solid">Explore Our Work</AnimatedButton>
     </div>
-      </div>
   );
 }

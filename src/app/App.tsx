@@ -33,8 +33,8 @@ export default function App() {
       <TheFeaturedWork/>
       <OurServices />
       {/* <SendUsBrief /> */}
-      {/* <SendBrief/> */}
-      {/* <LegacyIn/> */}
+      <SendBrief/>
+      <LegacyIn/>
       <WhatsNew />
       <ReadyToRise />
       {/* <ReadyToRise0 /> */}

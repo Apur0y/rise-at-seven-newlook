@@ -148,61 +148,62 @@ export default function Banner() {
           on every searchable platform
         </p>
 
-      <div className="md:flex justify-center items-center mt-10 hidden ">
+        <div className="xl:flex justify-center items-center mt-10 hidden ">
+          <div className="flex items-center gap-14 ">
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/gogle.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847622&s=59fe266f52b52a2f5caded270cca5b0f"
+              className="h-5 object-contain"
+            />
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/chat-gpt.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847621&s=4736cf2d6c608b09fccc2c64c443f9e5"
+              className="h-7 object-contain"
+            />
 
-        <div className="flex items-center gap-14 ">
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/gogle.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847622&s=59fe266f52b52a2f5caded270cca5b0f"
-            className="h-5 object-contain"
-          />
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/chat-gpt.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847621&s=4736cf2d6c608b09fccc2c64c443f9e5"
-            className="h-7 object-contain"
-          />
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/gemini.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847619&s=463ddee81964da94d8f59fae9f7b1ded"
+              className="h-5 object-contain"
+            />
 
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/tiktok.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847623&s=08b0dfde30f4100b663ca58de24c358c"
+              className="h-5 object-contain"
+            />
 
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/gemini.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847619&s=463ddee81964da94d8f59fae9f7b1ded"
-            className="h-5 object-contain"
-          />
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/youtube.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847623&s=2158714454d29911639dc9bb8c906e26"
+              className="h-5 object-contain"
+            />
 
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/tiktok.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847623&s=08b0dfde30f4100b663ca58de24c358c"
-            className="h-5 object-contain"
-          />
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/pinterest.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847620&s=17c0517351d1efef45ac391801ed3db9"
+              className="h-5 object-contain"
+            />
 
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/youtube.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847623&s=2158714454d29911639dc9bb8c906e26"
-            className="h-5 object-contain"
-          />
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/giphy.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847619&s=78f10c1dacfadddf5ebd6d9a18a64091"
+              className="h-5 object-contain"
+            />
 
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/pinterest.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847620&s=17c0517351d1efef45ac391801ed3db9"
-            className="h-5 object-contain"
-          />
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/reddit.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847620&s=80b6bca1e6630e7882d1a278c97351ff"
+              className="h-5 object-contain"
+            />
 
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/giphy.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847619&s=78f10c1dacfadddf5ebd6d9a18a64091"
-            className="h-5 object-contain"
-          />
-
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/reddit.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847620&s=80b6bca1e6630e7882d1a278c97351ff"
-            className="h-5 object-contain"
-          />
-
-          <img
-            src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/amazon.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847619&s=2227b641cefbadd9fc0c874a2eae3079"
-            className="h-5 object-contain"
-          />
+            <img
+              src="https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Social/White/amazon.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847619&s=2227b641cefbadd9fc0c874a2eae3079"
+              className="h-5 object-contain"
+            />
+          </div>
         </div>
-                
-      </div>
       </div>
 
-      <h1>Organic media planners creating, distributing & optimising
-search-first content for SEO, Social, PR, Ai and LLM search
-</h1>
+      <h1 className="absolute bottom-5 left-5 text-base text-white">
+        Organic media planners creating, distributing & optimising <br /> search-first
+        content for SEO, Social, PR, Ai and LLM search
+      </h1>
+      <h1 className="absolute bottom-5 right-5 text-base text-white">
+        4 Global Offices serving <br /> UK, USA (New York) & EU
+      </h1>
     </section>
   );
 }
