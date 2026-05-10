@@ -28,8 +28,8 @@ export default function App() {
       <Banner />
       <AgencyBehind />
       <AboutUs />
-      {/* <FeaturedWork /> */}
-      <TheFeaturedWork/>
+      <FeaturedWork />
+      {/* <TheFeaturedWork/> */}
       <OurServices />
       {/* <SendUsBrief /> */}
       {/* <SendBrief/> */}

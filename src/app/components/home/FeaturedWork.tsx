@@ -38,6 +38,8 @@ export default function FeaturedWork() {
   const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
   const trackRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cards = gsap.utils.toArray<HTMLElement>(".card");
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const N = PROJECTS.length;
@@ -99,24 +101,16 @@ export default function FeaturedWork() {
             lastSnapped = snapped;
             setActiveIndex(snapped);
 
-            imagesRef.current.forEach((img, i) => {
-              if (!img) return;
-              if (i === snapped) {
-                // Bring active to top BEFORE fading in so it's hoverable immediately
-                gsap.set(img, { zIndex: 10, pointerEvents: "auto" });
-                gsap.to(img, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" });
-              } else {
-                gsap.to(img, {
-                  opacity: 0,
-                  scale: 1.04,
-                  duration: 0.6,
-                  ease: "power2.out",
-                  onComplete: () => {
-                    // Drop below and disable pointer events once hidden
-                    gsap.set(img, { zIndex: 0, pointerEvents: "none" });
-                  },
-                });
-              }
+            cards.forEach((card, i) => {
+              const distance = i - snapped;
+
+              gsap.to(card, {
+                y: distance * 120,
+                scale: i === snapped ? 1 : 0.85,
+                opacity: i === snapped ? 1 : 0.3,
+                zIndex: i === snapped ? 10 : 1,
+                duration: 0.4,
+              });
             });
           }
         },
@@ -129,18 +123,15 @@ export default function FeaturedWork() {
   return (
     <section
       ref={containerRef}
-      className="relative bg-black text-white mx-6 rounded-3xl"
+      className="relative bg-black text-white mx-6  rounded-3xl"
       style={{ minHeight: "400vh" }}
     >
       <div className="sticky top-0 h-screen featured-work-content">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-full">
-          <div className="grid lg:grid-cols-2 gap-16 h-full items-center py-20">
-
+          <div className="grid lg:grid-cols-2 gap-16 h-full items-center justify-center ">
             {/* LEFT: title carousel */}
             <div className="flex flex-col justify-center h-full">
-              <h2 className="text-4xl md:text-5xl font-bold mb-12">
-                Featured Work
-              </h2>
+              <h2 className="text-base md:text-xl font-bold ">Featured Work</h2>
 
               <div
                 className="relative overflow-hidden"
@@ -160,12 +151,17 @@ export default function FeaturedWork() {
                 <div
                   ref={trackRef}
                   className="absolute w-full"
-                  style={{ top: `${ITEM_HEIGHT * 2}px`, willChange: "transform" }}
+                  style={{
+                    top: `${ITEM_HEIGHT * 2}px`,
+                    willChange: "transform",
+                  }}
                 >
                   {PROJECTS.map((project, i) => (
                     <div
                       key={i}
-                      ref={(el) => (itemRefs.current[i] = el)}
+                      ref={(el) => {
+                        itemRefs.current[i] = el;
+                      }}
                       className="flex flex-col justify-center pr-8"
                       style={{
                         height: `${ITEM_HEIGHT}px`,
@@ -188,60 +184,52 @@ export default function FeaturedWork() {
                   className="absolute inset-x-0 top-0 z-20 pointer-events-none"
                   style={{
                     height: `${ITEM_HEIGHT * 2}px`,
-                    background: "linear-gradient(to bottom, black, transparent)",
+                    background:
+                      "linear-gradient(to bottom, black, transparent)",
                   }}
                 />
                 <div
                   className="absolute inset-x-0 bottom-0 z-20 pointer-events-none"
                   style={{
                     height: `${ITEM_HEIGHT * 2}px`,
-                    background: "linear-gradient(to top, black, transparent)",
+                    // background: "linear-gradient(to top, black, transparent)",
                   }}
                 />
               </div>
             </div>
 
-            {/* RIGHT: image panel */}
-            <div className="relative h-[500px] lg:h-[600px]">
+            <div className="relative w-[400px] h-[400px]">
               {PROJECTS.map((project, i) => (
                 <div
                   key={i}
-                  ref={(el) => (imagesRef.current[i] = el)}
-                  className="group absolute inset-0 rounded-2xl overflow-hidden"
-                  style={{
-                    opacity: i === 0 ? 1 : 0,
-                    zIndex: i === 0 ? 10 : 0,
-                    // Only active is hoverable from the start
-                    pointerEvents: i === 0 ? "auto" : "none",
-                    willChange: "opacity, transform",
-                  }}
+                  className="
+                card
+                absolute
+                top-1/2
+                left-1/2
+                -translate-x-1/2
+                -translate-y-1/2
+                w-[350px]
+                h-24
+                bg-orange-500
+                rounded-2xl
+                flex
+                items-center
+                justify-center
+                text-2xl
+                font-bold
+              "
                 >
-                  {/* Image with zoom on hover */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${project.image}?w=900&q=80)` }}
-                  />
-
-                  {/* Ripple fill on hover */}
-                  <div
-                    className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
-                               w-8 h-8 rounded-full scale-0 group-hover:scale-[40]
-                               transition-transform duration-700 ease-out"
-                    style={{ backgroundColor: "#03fcca", opacity: 0.6 }}
-                  />
-
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-700" />
-
-                  {/* Text content */}
-                  <div className="relative z-10 h-full flex flex-col justify-end p-8 text-white">
-                    <h2 className="text-4xl font-bold">{project.title}</h2>
-                    <p className="mt-2 text-white/70">{project.description}</p>
-                  </div>
+                  {/* <div
+                    className=" bg-cover bg-center transition-transform duration-200 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${project.image}?w=900&q=60)` }}
+                  /> */}
+                  Card {i + 1}
                 </div>
               ))}
             </div>
 
+            {/* RIGHT: image panel */}
           </div>
         </div>
       </div>

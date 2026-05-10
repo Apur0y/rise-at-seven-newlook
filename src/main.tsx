@@ -8,6 +8,7 @@ import {
 import "./styles/index.css";
 import App from "./app/App";
 import LegacyIn from "./app/components/home/LegacyIn";
+import TestDiv from "./app/components/TestDiv";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/animate",
-    element: <LegacyIn />,
+    element: <TestDiv />,
   },
 ]);
 
