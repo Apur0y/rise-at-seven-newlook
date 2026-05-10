@@ -47,19 +47,14 @@ export default function TheFeaturedWork() {
     const track = trackRef.current;
     if (!container || !track) return;
 
+    const images = gsap.utils.toArray<HTMLElement>(".image");
+    gsap.set(images, {
+      y: (i) => i * 800,
+    });
+
     // Initial state
     gsap.set(track, { y: 0 });
-    itemRefs.current.forEach((item, i) => {
-      if (!item) return;
-      gsap.set(item, {
-        opacity: i === 0 ? 1 : Math.max(0.08, 1 - i * 0.55),
-        scale: i === 0 ? 1 : Math.max(0.78, 1 - i * 0.1),
-      });
-    });
-    imagesRef.current.forEach((img, i) => {
-      if (!img) return;
-      gsap.set(img, { opacity: i === 0 ? 1 : 0, scale: i === 0 ? 1 : 1.04 });
-    });
+   
 
     let lastSnapped = 0;
 
@@ -69,29 +64,29 @@ export default function TheFeaturedWork() {
         start: "top top",
         end: "bottom bottom",
         pin: ".featured-work-content",
+        scrub: true,
         onUpdate(self) {
           const raw = self.progress * (N - 1);
           const snapped = Math.round(raw);
+          const progress = self.progress;
+          const rawIndex = progress * (images.length - 1);
+          const index = Math.round(self.progress * (images.length - 1));
+
+          
+
+          images.forEach((title, i) => {
+            gsap.to(title, {
+              y: (i - rawIndex) * 500,
+              duration: 0.3,
+            });
+          });
 
           // Slide track
           gsap.to(track, {
             y: -(raw * ITEM_HEIGHT),
-            duration: 0.08,
+            duration: 0,
             ease: "none",
             overwrite: true,
-          });
-
-          // Per-title opacity + scale
-          itemRefs.current.forEach((item, i) => {
-            if (!item) return;
-            const dist = Math.abs(raw - i);
-            gsap.to(item, {
-              opacity: Math.max(0.08, 1 - dist * 0.55),
-              scale: Math.max(0.78, 1 - dist * 0.1),
-              duration: 0.08,
-              ease: "none",
-              overwrite: true,
-            });
           });
 
           // Crossfade images + update zIndex on snap change
@@ -99,26 +94,7 @@ export default function TheFeaturedWork() {
             lastSnapped = snapped;
             setActiveIndex(snapped);
 
-            imagesRef.current.forEach((img, i) => {
-              if (!img) return;
-              if (i === snapped) {
-                // Bring active to top BEFORE fading in so it's hoverable immediately
-                gsap.set(img, { zIndex: 10, pointerEvents: "auto" });
-                gsap.to(img, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" });
-              } else {
-                gsap.to(img, {
-                  opacity: 0,
-                  scale: 1.04,
-                  duration: 0.6,
-                  ease: "power2.out",
-                  onComplete: () => {
-                    // Drop below and disable pointer events once hidden
-                    gsap.set(img, { zIndex: 0, pointerEvents: "none" });
-                  },
-                });
-              }
-            });
-          }
+             }
         },
       });
     }, container);
@@ -129,19 +105,16 @@ export default function TheFeaturedWork() {
   return (
     <section
       ref={containerRef}
-      className="relative bg-black text-white mx-6  rounded-3xl"
+      className="relative  text-white mx-6  rounded-3xl"
       style={{ minHeight: "400vh" }}
       id="featured"
     >
-      <div  className="sticky top-0 h-screen featured-work-content">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-full">
+      <div className="sticky top-7 bottom-7 h-[92vh]  overflow-hidden featured-work-content bg-neutral-900 rounded-3xl ">
+        <div className=" px-6 lg:px-12 h-full ">
           <div className="grid lg:grid-cols-2 gap-16 h-full items-center justify-center ">
-
             {/* LEFT: title carousel */}
             <div className="flex flex-col justify-center h-full">
-              <h2 className="text-base md:text-xl font-bold ">
-                Featured Work
-              </h2>
+              <h2 className="text-base md:text-xl font-bold ">Featured Work</h2>
 
               <div
                 className="relative overflow-hidden"
@@ -161,25 +134,28 @@ export default function TheFeaturedWork() {
                 <div
                   ref={trackRef}
                   className="absolute w-full"
-                  style={{ top: `${ITEM_HEIGHT * 2}px`, willChange: "transform" }}
+                  style={{
+                    top: `${ITEM_HEIGHT * 2}px`,
+                    willChange: "transform",
+                  }}
                 >
                   {PROJECTS.map((project, i) => (
                     <div
                       key={i}
-                      ref={(el) => {itemRefs.current[i] = el;}}
+                      ref={(el) => {
+                        itemRefs.current[i] = el;
+                      }}
                       className="flex flex-col justify-center pr-8"
                       style={{
                         height: `${ITEM_HEIGHT}px`,
                         transformOrigin: "left center",
                         willChange: "transform, opacity",
                       }}
+                      onMouseEnter={() => setActiveIndex(i)}
                     >
-                      <h3 className="text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                      <h3 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight">
                         {project.title}
                       </h3>
-                      <p className="mt-1 text-base text-white/50">
-                        {project.description}
-                      </p>
                     </div>
                   ))}
                 </div>
@@ -203,25 +179,14 @@ export default function TheFeaturedWork() {
             </div>
 
             {/* RIGHT: image panel */}
-            <div className="relative h-[500px] lg:h-[500px]">
+            <div className="relative h-[400px]">
               {PROJECTS.map((project, i) => (
                 <div
                   key={i}
-                  ref={(el) => {imagesRef.current[i] = el;}}
-                  className="group absolute inset-0 rounded-2xl overflow-hidden cursor-pointer"
-                  style={{
-                    opacity: i === 0 ? 1 : 0,
-                    zIndex: i === 0 ? 10 : 0,
-                    // Only active is hoverable from the start
-                    pointerEvents: i === 0 ? "auto" : "none",
-                    willChange: "opacity, transform",
-                  }}
+                  className="group image absolute w-full rounded-2xl overflow-hidden cursor-pointer"
                 >
                   {/* Image with zoom on hover */}
-                  <div
-                    className="absolute inset-0  bg-cover bg-center transition-transform duration-200 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${project.image}?w=900&q=60)` }}
-                  />
+                  <img src={project.image} alt={project.title} />
 
                   {/* Ripple fill on hover */}
                   <div
@@ -231,7 +196,6 @@ export default function TheFeaturedWork() {
                     style={{ backgroundColor: "#03fcca" }}
                   />
 
-                 
                   {/* Text content */}
                   <div className="relative hidden  z-10 h-full hover:flex flex-col justify-end p-8 text-white">
                     <h2 className="text-4xl font-bold">{project.title}</h2>
@@ -240,7 +204,6 @@ export default function TheFeaturedWork() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </div>
