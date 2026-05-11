@@ -1,12 +1,11 @@
-import AnimatedButton from '../AnimatedButton';
+import AnimatedButton from "../AnimatedButton";
 
 export default function AboutUs() {
   return (
     <section className="mx-4 py-6 xl:py-12">
-      <div className="grid lg:grid-cols-2 gap-24 justify-between">
-        
+      <div className="grid md:grid-cols-2 gap-24 justify-between">
         {/* Left text */}
-        <div className="space-y-6">
+        <div className="space-y-6 hidden md:flex">
           <p className="text-lg md:text-xl font-medium max-w-xl">
             A global team of search-first content marketers <br />
             engineering semantic relevancy & category <br />
@@ -21,15 +20,20 @@ export default function AboutUs() {
             <span>Discovery</span>
           </h2>
 
-          <AnimatedButton variant="solid">
-            Our Story
-          </AnimatedButton>
+          <div className="space-y-6 md:hidden">
+            <p className="text-lg md:text-xl font-medium max-w-xl">
+              A global team of search-first content marketers <br />
+              engineering semantic relevancy & category <br />
+              signals for both the internet and people
+            </p>
+          </div>
 
-          <AnimatedButton>
-            Our Services
-          </AnimatedButton>
+          <div className="flex flex-col md:flex-row">
+            <AnimatedButton variant="solid">Our Story</AnimatedButton>
+
+            <AnimatedButton>Our Services</AnimatedButton>
+          </div>
         </div>
-
       </div>
     </section>
   );

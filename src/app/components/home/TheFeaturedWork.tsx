@@ -222,8 +222,8 @@ export default function TheFeaturedWork() {
           </div>
         </div>
       </section>
-      <div className="flex items-center justify-center">
-        <AnimatedButton variant="solid">Explore Our Work</AnimatedButton>
+      <div className="flex items-center justify-center w-full">
+        <AnimatedButton variant="solid" >Explore Our Work</AnimatedButton>
       </div>
     </div>
   );

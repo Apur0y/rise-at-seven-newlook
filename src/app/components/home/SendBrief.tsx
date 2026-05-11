@@ -67,7 +67,7 @@ export default function SendBrief() {
       id="brief"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="overflow-hidden py-5 cursor-none"
+      className="overflow-hidden xl:py-5 cursor-none"
         data-cursor-text="Send Us Your Brief"
     >
       <div
@@ -80,7 +80,7 @@ export default function SendBrief() {
             className="flex items-center gap-10 pr-16 whitespace-nowrap"
           >
             <span
-              className="text-[200px] font-black leading-none  "
+              className="text-7xl xl:text-[200px] font-black leading-none  "
               style={{
                 fontStretch: "115%",
                 fontVariationSettings: '"wdth" 115',
@@ -92,11 +92,11 @@ export default function SendBrief() {
             <img
               src="https://images.pexels.com/photos/8980243/pexels-photo-8980243.jpeg"
               alt=""
-              className="w-40 h-40 object-cover rounded-[2rem] shrink-0 border border-white/10"
+              className="w-32 h-32 xl:w-40 xl:h-40 object-cover rounded-[2rem] shrink-0 border border-white/10"
             />
 
             <span
-              className="text-[200px] font-black leading-none  "
+              className="text-7xl xl:text-[200px] font-black leading-none  "
               style={{
                 fontStretch: "115%",
                 fontVariationSettings: '"wdth" 115',
@@ -108,7 +108,7 @@ export default function SendBrief() {
             <img
               src="https://images.pexels.com/photos/6976660/pexels-photo-6976660.jpeg"
               alt=""
-              className="w-40 h-40 object-cover rounded-[2rem] shrink-0 border border-white/10"
+              className="w-32 h-32 xl:w-40 xl:h-40 object-cover rounded-[2rem] shrink-0 border border-white/10"
             />
           </div>
         ))}

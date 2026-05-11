@@ -73,7 +73,7 @@ export default function Banner() {
           <h1 className="uppercase text-sm mb-2">
             #1 Most recommended <br /> content marketing agency
           </h1>
-          <div className="flex items-center gap-2 ">
+          <div className="flex items-center gap-2 mb-5">
             <svg
               viewBox="0 0 28 38"
               fill="none"
@@ -132,7 +132,7 @@ export default function Banner() {
             </span>
             <div
               ref={imageRef}
-              className="inline-block w-32 h-32  bg-cover bg-center rounded-2xl  shadow-2xl  opacity-0"
+              className="inline-block w-14 h-14 md:w-32 md:h-32  bg-cover bg-center rounded-lg md:rounded-2xl  shadow-2xl  opacity-0"
               style={{ backgroundImage: `url(${currentImage})` }}
             />
             <span className=" bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
@@ -197,11 +197,11 @@ export default function Banner() {
         </div>
       </div>
 
-      <h1 className="absolute bottom-5 left-5 text-base text-white">
+      <h1 className="absolute bottom-5 hidden md:block left-5 text-base text-white">
         Organic media planners creating, distributing & optimising <br /> search-first
         content for SEO, Social, PR, Ai and LLM search
       </h1>
-      <h1 className="absolute bottom-5 right-5 text-base text-white">
+      <h1 className="absolute bottom-5  md:right-5 text-base text-white">
         4 Global Offices serving <br /> UK, USA (New York) & EU
       </h1>
     </section>
