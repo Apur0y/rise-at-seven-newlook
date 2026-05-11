@@ -87,7 +87,7 @@ export default function LegacyIn() {
         ref={container}
         className="relative h-screen  overflow-hidden"
       >
-        <h1 className="text-xl absolute top-30 left-1/2  text-center text-black">
+        <h1 className="text-xl absolute top-30 left-6 right-6  text-center text-black">
           Legacy In The Making
         </h1>
 

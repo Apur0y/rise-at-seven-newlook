@@ -72,7 +72,7 @@ export default function ReadyToRise() {
   return (
     <div
       ref={container}
-      className="overflow-hidden flex items-center"
+      className="overflow-hidden hidden xl:flex items-center"
       style={{
         height: '800px',
       }}
