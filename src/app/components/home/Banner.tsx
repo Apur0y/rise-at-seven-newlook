@@ -126,7 +126,7 @@ export default function Banner() {
         >
           We Create
           <br />
-          <div className="flex items-center gap-3">
+          <div className="flex items-center flex-wrap justify-center gap-3">
             <span className=" bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
               Category
             </span>

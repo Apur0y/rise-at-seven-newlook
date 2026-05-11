@@ -46,6 +46,24 @@ export default function TheFeaturedWork() {
 
   const N = PROJECTS.length;
 
+  const moveDistanceRef = useRef(getMoveDistance());
+
+  function getMoveDistance() {
+    const w = window.innerWidth;
+    if (w < 420) return 250;
+    if (w < 800) return 400;
+    if (w < 1000) return 700;
+    return 500;
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      moveDistanceRef.current = getMoveDistance();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     const container = containerRef.current;
     const track = trackRef.current;
@@ -74,11 +92,10 @@ export default function TheFeaturedWork() {
           const progress = self.progress;
           const rawIndex = progress * (images.length - 1);
           const index = Math.round(self.progress * (images.length - 1));
-          const MOVE_DISTANCE = window.innerWidth < 1000 ? window.innerWidth < 800 ? window.innerWidth < 420 ?250 :400 : 700 : 500;
 
           images.forEach((title, i) => {
             gsap.to(title, {
-              y: (i - rawIndex) * MOVE_DISTANCE,
+              y: (i - rawIndex) * moveDistanceRef.current,
               duration: 0.3,
             });
           });
@@ -112,9 +129,9 @@ export default function TheFeaturedWork() {
       >
         <div className="sticky top-7 bottom-7 h-[92vh]  overflow-hidden featured-work-content bg-neutral-950 rounded-3xl ">
           <div className=" px-6 lg:px-12 h-full ">
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 h-full items-center justify-center ">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 h-full items-center justify-center ">
               {/* LEFT: title carousel */}
-              <div className="hidden xl:flex flex-col justify-center h-full">
+              <div className="hidden lg:flex flex-col justify-center h-full">
                 <h2 className="text-base md:text-xl font-bold ">
                   Featured Work
                 </h2>
@@ -210,9 +227,7 @@ export default function TheFeaturedWork() {
                     </div>
                     {/* Mobile Section */}
                     <div className="absolute bottom-5 left-4 group-hover:hidden">
-                      <p className="mt-2 text-white/70">
-                        {project.timeline}
-                      </p>
+                      <p className="mt-2 text-white/70">{project.timeline}</p>
                       <h2 className="text-4xl font-bold">{project.title}</h2>
                     </div>
                   </div>
@@ -223,7 +238,7 @@ export default function TheFeaturedWork() {
         </div>
       </section>
       <div className="flex items-center justify-center w-full">
-        <AnimatedButton variant="solid" >Explore Our Work</AnimatedButton>
+        <AnimatedButton variant="solid">Explore Our Work</AnimatedButton>
       </div>
     </div>
   );

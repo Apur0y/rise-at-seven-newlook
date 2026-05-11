@@ -14,7 +14,6 @@ import SendBrief from './components/home/SendBrief';
 import LegacyIn from './components/home/LegacyIn';
 import TheFeaturedWork from './components/home/TheFeaturedWork';
 import ReadyToRise from './components/home/ReadyToRise';
-import ReadyToRise0 from './components/home/ReadyToRise0';
 import PageReveal from './components/PageTransition';
 import MobileLegacyIn from './components/home/MobileLegacyIn';
 
