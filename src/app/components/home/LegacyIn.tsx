@@ -85,7 +85,7 @@ export default function LegacyIn() {
   
       <div
         ref={container}
-        className="relative h-screen  overflow-hidden"
+        className="lg:block relative h-screen hidden overflow-hidden"
       >
         <h1 className="text-xl absolute top-30 left-6 right-6  text-center text-black">
           Legacy In The Making

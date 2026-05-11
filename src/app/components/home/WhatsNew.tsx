@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedButton from "../AnimatedButton";
@@ -36,7 +36,14 @@ const NEWS_ITEMS = [
 export default function WhatsNew() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const trackRef = useRef<HTMLDivElement>(null);
 
+  const [realIndex, setRealIndex] = useState(NEWS_ITEMS.length); // start at middle copy
+  const activeIndex = realIndex % NEWS_ITEMS.length;
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  // Desktop scroll animations
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -66,18 +73,34 @@ export default function WhatsNew() {
     return () => ctx.revert();
   }, []);
 
+  // Slide track when activeIndex changes
+  useEffect(() => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(-${realIndex * 85}%)`; // 85 matches card width%
+    }
+  }, [realIndex]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      setRealIndex((prev) => prev + (diff > 0 ? 1 : -1));
+    }
+  };
+
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 ">
+    <section ref={sectionRef} className="py-24 md:py-32">
       <div className="px-6 lg:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-5 md:mb-16 gap-6 border-b pb-4">
           <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold flex gap-3 flex-wrap">
             <span>What's</span>
             <img
-              src={
-                "https://images.pexels.com/photos/3522692/pexels-photo-3522692.jpeg"
-              }
+              src="https://images.pexels.com/photos/3522692/pexels-photo-3522692.jpeg"
               alt="Images"
-              className="inline-block w-16 h-16 md:w-24 md:h-24  bg-cover bg-center rounded-2xl  shadow-2xl object-center object-cover"
+              className="inline-block w-16 h-16 md:w-24 md:h-24 bg-cover bg-center rounded-2xl shadow-2xl object-center object-cover"
             />
             <span>New</span>
           </h2>
@@ -88,35 +111,88 @@ export default function WhatsNew() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* ── MOBILE CAROUSEL ── */}
+
+        <div
+          className="lg:hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="overflow-hidden">
+            <div
+              ref={trackRef}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ willChange: "transform" }}
+            >
+              {[...NEWS_ITEMS, ...NEWS_ITEMS, ...NEWS_ITEMS].map(
+                (item, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 pr-4"
+                    style={{ width: "85%" }}
+                  >
+                    <div
+                      className="relative h-64 mb-4 bg-cover bg-center rounded-2xl overflow-hidden"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    />
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-sm text-gray-500 font-medium">
+                        <span className="uppercase tracking-wide bg-white px-3 py-1 rounded-2xl">
+                          {item.category}
+                        </span>
+                        <span className="bg-white px-3 py-1 rounded-2xl flex items-center gap-1">
+                          <MdTimer />
+                          {item.date}
+                        </span>
+                      </div>
+                      <p className="text-black text-base font-semibold">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+
+          {/* Progress bar */}
+          <div className="mt-6 h-[2px] bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-black rounded-full transition-all duration-500 ease-in-out"
+              style={{
+                width: `${((activeIndex + 1) / NEWS_ITEMS.length) * 100}%`,
+              }}
+            />
+          </div>
+        </div>
+
+        {/* ── DESKTOP GRID (unchanged) ── */}
+        <div className="hidden lg:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {NEWS_ITEMS.map((item, index) => (
             <div
               key={index}
-              // ref={(el) => (cardsRef.current[index] = el)}
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
-              className="group  opacity-0 cursor-arrow "
+              className="group opacity-0 cursor-arrow"
             >
               <div
                 className="relative h-64 md:h-72 mb-6 bg-cover bg-center rounded-2xl overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-500"
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="absolute bottom-10 left-1/2  rounded-full -translate-x-1/2 translate-y-1/2 scale-50 group-hover:scale-200 w-96 group-hover:h-96 duration-700 transition-all bg-white/10 backdrop-blur-sm"></div>
+                <div className="absolute bottom-10 left-1/2 rounded-full -translate-x-1/2 translate-y-1/2 scale-50 group-hover:scale-200 w-96 group-hover:h-96 duration-700 transition-all bg-white/10 backdrop-blur-sm" />
               </div>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm text-gray-500 font-medium">
                   <span className="uppercase tracking-wide bg-white px-3 py-1 rounded-2xl">
                     {item.category}
                   </span>
-
                   <span className="bg-white px-3 py-1 rounded-2xl flex items-center gap-1">
                     <MdTimer />
                     {item.date}
                   </span>
                 </div>
-
-                <p className="text-black text-base md:text-2xl font-semibold ">
+                <p className="text-black text-base md:text-2xl font-semibold">
                   {item.description}
                 </p>
               </div>

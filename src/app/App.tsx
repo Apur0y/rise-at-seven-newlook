@@ -16,6 +16,7 @@ import TheFeaturedWork from './components/home/TheFeaturedWork';
 import ReadyToRise from './components/home/ReadyToRise';
 import ReadyToRise0 from './components/home/ReadyToRise0';
 import PageReveal from './components/PageTransition';
+import MobileLegacyIn from './components/home/MobileLegacyIn';
 
 
 export default function App() {
@@ -31,15 +32,13 @@ export default function App() {
       <Banner />
       <AgencyBehind />
       <AboutUs />
-      {/* <FeaturedWork /> */}
       <TheFeaturedWork/>
       <OurServices />
-      {/* <SendUsBrief /> */}
       <SendBrief/>
       <LegacyIn/>
+      <MobileLegacyIn/>
       <WhatsNew />
       <ReadyToRise />
-      {/* <ReadyToRise0 /> */}
       <Footer />
       </SmoothScroll>
 

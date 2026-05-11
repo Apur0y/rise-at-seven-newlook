@@ -98,8 +98,8 @@ export default function OurServices() {
             );
           })}
         </div>
-         <div className="w-full md:hidden">
-            <AnimatedButton variant="solid" className="w-full">View all services</AnimatedButton>
+         <div className="w-full flex justify-center items-center md:hidden mt-5">
+            <AnimatedButton variant="solid" >View all services</AnimatedButton>
           </div>
       </div>
       
