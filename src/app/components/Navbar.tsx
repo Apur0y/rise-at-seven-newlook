@@ -270,7 +270,7 @@ export default function Navbar() {
 function NavItem({ label }: { label: string }) {
   return (
     <div className="group relative cursor-pointer">
-      <span className="text-sm lg:text-base font-medium hover:bg-white px-2 py-1 rounded-2xl transition-colors duration-200">
+      <span className="text-sm lg:text-base font-base hover:bg-white hover:text-black px-2 py-1 rounded-2xl transition-colors duration-200">
         {label}
       </span>
 

@@ -4,23 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const COMPANIES = [
-  "Google",
-  "Meta",
-  "Amazon",
-  "Apple",
-  "Microsoft",
-  "Netflix",
-  "Tesla",
-  "Spotify",
-  "Adobe",
-  "Salesforce",
-  "Oracle",
-  "IBM",
-  "Intel",
-  "Cisco",
-  "Samsung",
-];
 
 const AGENCY_SVGS = [
   <svg
@@ -98,7 +81,7 @@ export default function AgencyBehind() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const speedRef = useRef(BASE_SPEED);
   const positionRef = useRef(0);
-  const animationIdRef = useRef<number>();
+  const animationIdRef = useRef<number>(0);
 
   useEffect(() => {
     const section = sectionRef.current;
