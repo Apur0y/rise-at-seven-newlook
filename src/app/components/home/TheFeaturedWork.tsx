@@ -5,34 +5,99 @@ import AnimatedButton from "../AnimatedButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// const PROJECTS = [
+//   {
+//     title: "E-commerce Revolution",
+//     description: "Increased organic traffic by 450%",
+//     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+//     color: "#00D1FF", // cyan blue
+//     timeline: "[2023 - 2025]",
+//   },
+//   {
+//     title: "SaaS Growth Strategy",
+//     description: "10x revenue in 12 months",
+//     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+//     color: "#A78BFA", // soft purple
+//     timeline: "[2023 - 2025]",
+//   },
+//   {
+//     title: "Brand Transformation",
+//     description: "From zero to market leader",
+//     image: "https://images.unsplash.com/photo-1557838923-2985c318be48",
+//     color: "#FB7185", // soft pink/red
+//     timeline: "2025",
+//   },
+//   {
+//     title: "Content Marketing Win",
+//     description: "2M+ impressions monthly",
+//     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
+//     color: "#34D399", // emerald green
+//     timeline: "[2023 - 2025]",
+//   },
+// ];
 const PROJECTS = [
   {
     title: "E-commerce Revolution",
     description: "Increased organic traffic by 450%",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-    color: "#00D1FF", // cyan blue
-    timeline: "[2023 - 2025]",
+    color: "#C4FF00",
+    timeline: "2024",
   },
   {
     title: "SaaS Growth Strategy",
     description: "10x revenue in 12 months",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-    color: "#A78BFA", // soft purple
+    color: "#C4FF00",
     timeline: "[2023 - 2025]",
   },
   {
     title: "Brand Transformation",
     description: "From zero to market leader",
     image: "https://images.unsplash.com/photo-1557838923-2985c318be48",
-    color: "#FB7185", // soft pink/red
-    timeline: "2025",
+    color: "#C4FF00",
+    timeline: "2023",
   },
   {
     title: "Content Marketing Win",
     description: "2M+ impressions monthly",
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
-    color: "#34D399", // emerald green
+    color: "#C4FF00",
+    timeline: "2024",
+  },
+  {
+    title: "Startup Launch Success",
+    description: "Reached 100K users in 30 days",
+    image: "https://images.unsplash.com/photo-1556761175-129418cb2dfe",
+    color: "#C4FF00",
     timeline: "[2023 - 2025]",
+  },
+  {
+    title: "UI/UX Overhaul",
+    description: "Improved conversion rate by 80%",
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d",
+    color: "#C4FF00",
+    timeline: "[2023 - 2025]",
+  },
+  {
+    title: "SEO Domination",
+    description: "Ranked #1 on competitive keywords",
+    image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1",
+    color: "#C4FF00",
+    timeline: "2024",
+  },
+  {
+    title: "Social Media Growth",
+    description: "1M+ followers in under a year",
+    image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868",
+    color: "#C4FF00",
+    timeline: "[2023 - 2025]",
+  },
+  {
+    title: "Product Launch Impact",
+    description: "Sold out within 48 hours",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
+    color: "#C4FF00",
+    timeline: "2023",
   },
 ];
 
@@ -228,7 +293,7 @@ export default function TheFeaturedWork() {
                     {/* Mobile Section */}
                     <div className="absolute bottom-5 left-4 group-hover:hidden">
                       <p className="mt-2 text-white/70">{project.timeline}</p>
-                      <h2 className="text-4xl font-bold">{project.title}</h2>
+                      <h2 className=" text-2xl lg:text-4xl font-bold">{project.title}</h2>
                     </div>
                   </div>
                 ))}

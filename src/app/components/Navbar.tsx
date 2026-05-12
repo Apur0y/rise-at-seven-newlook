@@ -5,19 +5,19 @@ import { HiOutlineMenuAlt3, HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 
 const NAV_ITEMS = [
   {
-    label: "Services",
+    label: "Services+",
     children: ["SEO", "Web Design", "Marketing"],
   },
   {
-    label: "Industries",
+    label: "Industries+",
     children: ["Healthcare", "Finance", "E-commerce"],
   },
   {
-    label: "International",
+    label: "International+",
     children: ["USA", "UK", "Canada"],
   },
   {
-    label: "About",
+    label: "About+",
     children: ["Company", "Team", "Mission"],
   },
   {
@@ -29,7 +29,7 @@ const NAV_ITEMS = [
     children: ["Open Roles", "Culture"],
   },
   {
-    label: "Blog & Resources",
+    label: "Blog & Resources+",
     children: ["Articles", "Guides"],
   },
   {
@@ -270,11 +270,10 @@ export default function Navbar() {
 function NavItem({ label }: { label: string }) {
   return (
     <div className="group relative cursor-pointer">
-      <span className="text-sm lg:text-base font-medium hover:text-white transition-colors duration-200">
+      <span className="text-sm lg:text-base font-medium hover:bg-white px-2 py-1 rounded-2xl transition-colors duration-200">
         {label}
       </span>
 
-      <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
     </div>
   );
 }

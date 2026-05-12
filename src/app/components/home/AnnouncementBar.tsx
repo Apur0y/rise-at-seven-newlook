@@ -4,12 +4,12 @@ export default function AnnouncementBar() {
       
       {/* Default Text */}
       <span className="block transition-transform duration-300 group-hover:-translate-y-10">
-        🚨 Where are your customers actually searching? Download the report
+        🚨The Category Leaderboard - Live now
       </span>
 
       {/* Hover Text */}
       <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-300 group-hover:translate-y-0">
-        🚨 Where are your customers actually searching? Download the report
+        🚨The Category Leaderboard - Live now
       </span>
     </div>
   );

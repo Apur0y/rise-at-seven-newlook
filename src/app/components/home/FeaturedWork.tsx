@@ -29,6 +29,42 @@ const PROJECTS = [
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
     color: "#C4FF00",
   },
+  {
+    title: "Startup Launch Success",
+    description: "Reached 100K users in 30 days",
+    image: "https://images.unsplash.com/photo-1556761175-129418cb2dfe",
+    color: "#C4FF00",
+  },
+  {
+    title: "UI/UX Overhaul",
+    description: "Improved conversion rate by 80%",
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d",
+    color: "#C4FF00",
+  },
+  {
+    title: "SEO Domination",
+    description: "Ranked #1 on competitive keywords",
+    image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1",
+    color: "#C4FF00",
+  },
+  {
+    title: "Social Media Growth",
+    description: "1M+ followers in under a year",
+    image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868",
+    color: "#C4FF00",
+  },
+  {
+    title: "Ad Campaign Scaling",
+    description: "5x ROI on paid ads",
+    image: "https://images.unsplash.com/photo-1581091870620-6a3c1f0c3f0b",
+    color: "#C4FF00",
+  },
+  {
+    title: "Product Launch Impact",
+    description: "Sold out within 48 hours",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
+    color: "#C4FF00",
+  },
 ];
 
 const ITEM_HEIGHT = 110;

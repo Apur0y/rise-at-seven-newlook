@@ -148,7 +148,7 @@ export default function Banner() {
           on every searchable platform
         </p>
 
-        <div className="xl:flex justify-center items-center mt-10 hidden ">
+        <div className="min-[1700px]:flex justify-center items-center mt-10 hidden ">
           <div className="flex items-center gap-14 ">
             <img
               src="https://rise-atseven.transforms.svdcdn.com/production/images/Placeholder-logos/gogle.png?w=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847622&s=59fe266f52b52a2f5caded270cca5b0f"
