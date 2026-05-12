@@ -1,48 +1,150 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { MdArrowOutward, MdKeyboardArrowDown } from "react-icons/md";
-import { HiOutlineMenuAlt3, HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 
 const NAV_ITEMS = [
   {
     label: "Services+",
-    children: ["SEO", "Web Design", "Marketing"],
+    title: "Our Services",
+    children: [
+      {
+        name: "SEO",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+      },
+      {
+        name: "Web Design",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      },
+      {
+        name: "Marketing",
+        image: "https://images.unsplash.com/photo-1557838923-2985c318be48",
+      },
+    ],
   },
+
   {
     label: "Industries+",
-    children: ["Healthcare", "Finance", "E-commerce"],
+    title: "Industries We Serve",
+    children: [
+      {
+        name: "Healthcare",
+        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef",
+      },
+      {
+        name: "Finance",
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
+      },
+      {
+        name: "E-commerce",
+        image: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f",
+      },
+    ],
   },
+
   {
     label: "International+",
-    children: ["USA", "UK", "Canada"],
+    title: "Global Presence",
+    children: [
+      {
+        name: "USA",
+        image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29",
+      },
+      {
+        name: "UK",
+        image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad",
+      },
+      {
+        name: "Canada",
+        image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce",
+      },
+    ],
   },
+
   {
     label: "About+",
-    children: ["Company", "Team", "Mission"],
+    title: "About Us",
+    children: [
+      {
+        name: "Company",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
+      },
+      {
+        name: "Team",
+        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+      },
+      {
+        name: "Mission",
+        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      },
+    ],
   },
+
   {
     label: "Work",
-    children: ["Projects", "Case Studies"],
+    title: "Our Work",
+    children: [
+      {
+        name: "Projects",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+      },
+      {
+        name: "Case Studies",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      },
+    ],
   },
+
   {
     label: "Careers",
-    children: ["Open Roles", "Culture"],
+    title: "Join Our Team",
+    children: [
+      {
+        name: "Open Roles",
+        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216",
+      },
+      {
+        name: "Culture",
+        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      },
+    ],
   },
+
   {
     label: "Blog & Resources+",
-    children: ["Articles", "Guides"],
+    title: "Insights & Resources",
+    children: [
+      {
+        name: "Articles",
+        image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643",
+      },
+      {
+        name: "Guides",
+        image: "https://images.unsplash.com/photo-1513258496099-48168024aec0",
+      },
+    ],
   },
+
   {
     label: "Webinar",
-    children: ["Upcoming", "Recordings"],
+    title: "Webinars & Events",
+    children: [
+      {
+        name: "Upcoming",
+        image: "https://images.unsplash.com/photo-1511578314322-379afb476865",
+      },
+      {
+        name: "Recordings",
+        image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
+      },
+    ],
   },
 ];
-
 export default function Navbar() {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [hasGlass, setHasGlass] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   const lastScrollY = useRef(0);
   const navRef = useRef<HTMLElement>(null);
@@ -94,6 +196,7 @@ export default function Navbar() {
       });
     }
   }, [isVisible]);
+  console.log("Hi there", activeMenu);
 
   return (
     <>
@@ -106,6 +209,8 @@ export default function Navbar() {
         }`}
         style={{ top: scrollY <= 30 ? "48px" : "0" }}
       >
+        <div className="h-screen bg-white/20 backdrop-blur-lg fixed z-40"></div>
+
         <div className="mx-auto px-6 py-2">
           <div className="flex items-center justify-between">
             {/* LOGO */}
@@ -135,9 +240,16 @@ export default function Navbar() {
             </div>
 
             {/* DESKTOP NAV */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div
+              onMouseLeave={() => setActiveMenu(null)}
+              className="hidden lg:flex items-center xl:gap-8"
+            >
               {NAV_ITEMS.map((item) => (
-                <NavItem key={item.label} label={item.label} />
+                <NavItem
+                  key={item.label}
+                  item={item}
+                  setActiveMenu={setActiveMenu}
+                />
               ))}
             </div>
 
@@ -252,6 +364,7 @@ export default function Navbar() {
                 childrenItems={item.children}
               />
             ))}
+            ={" "}
           </div>
 
           {/* CTA BUTTON */}
@@ -267,13 +380,60 @@ export default function Navbar() {
   );
 }
 
-function NavItem({ label }: { label: string }) {
-  return (
-    <div className="group relative cursor-pointer">
-      <span className="text-sm lg:text-base font-base hover:bg-white hover:text-black px-2 py-1 rounded-2xl transition-colors duration-200">
-        {label}
-      </span>
+function NavItem({ item, setActiveMenu }: any) {
+  const [activeImage, setActiveImage] = useState(item.children[0]?.image);
 
+  useEffect(() => {
+    setActiveMenu(true);
+  }, []);
+
+  return (
+    <div
+      onMouseEnter={() => setActiveMenu(true)}
+      onMouseLeave={() => setActiveMenu(false)}
+      className="group"
+    >
+      {/* NAV BUTTON */}
+
+      {item.label == "Webinar" || item.label == "Blog & Resources+" ? (
+        <span className="cursor-pointer flex-warp  hidden xl:block text-sm lg:text-base hover:bg-white hover:text-black px-3 py-1 rounded-2xl transition-all duration-300">
+          {item.label}
+        </span>
+      ) : (
+        <span className="cursor-pointer text-sm lg:text-base hover:bg-white hover:text-black px-3 py-1 rounded-2xl transition-all duration-300">
+          {item.label}
+        </span>
+      )}
+
+      {/* CENTER CARD */}
+      <div className="fixed left-1/2 top-55 z-50 hidden -translate-x-1/2 -translate-y-1/2 group-hover:flex">
+        <div className="flex overflow-hidden rounded-3xl bg-white shadow-2xl">
+          {/* LEFT SIDE */}
+          <div className="flex min-w-[320px] flex-col gap-5 p-10 items-center justify-center">
+            <h1 className="text-2xl font-semibold text-black">{item.title}</h1>
+
+            {item.children.map((child: any) => (
+              <span
+                key={child.name}
+                onMouseEnter={() => setActiveImage(child.image)}
+                className="cursor-pointer text-2xl text-black transition-all duration-300 hover:translate-x-2 hover:text-gray-500"
+              >
+                {child.name}
+              </span>
+            ))}
+          </div>
+
+          {/* RIGHT IMAGE */}
+          <div className="h-[300px] w-[300px] overflow-hidden bg-gray-100">
+            <img
+              src={activeImage}
+              alt=""
+              className="h-full w-full object-cover transition-all duration-500"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="absolute top-10 hidden group-hover:flex w-12 h-12 group-hover:scale-200 -z-10"></div>
     </div>
   );
 }
@@ -283,7 +443,7 @@ function MobileDropdownItem({
   childrenItems,
 }: {
   label: string;
-  childrenItems: string[];
+  childrenItems: any;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -313,12 +473,9 @@ function MobileDropdownItem({
       >
         <div className="overflow-hidden">
           <div className="flex flex-col gap-3 pl-4">
-            {childrenItems.map((item) => (
-              <span
-                key={item}
-                className="text-white/70 hover:text-white transition-colors cursor-pointer"
-              >
-                {item}
+            {childrenItems.map((item: any) => (
+              <span className="text-white/70 hover:text-white transition-colors cursor-pointer">
+                {item.name}
               </span>
             ))}
           </div>
